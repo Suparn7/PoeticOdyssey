@@ -206,32 +206,31 @@ export class Service {
     }
 
     // Add to Service class in service.js
-async unlikePost(postId, userId) {
-    try {
-        const post = await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId);
-        const updatedLikes = post.likedBy.filter(id => id !== userId); // Remove userId from likedBy array
+    async unlikePost(postId, userId) {
+        try {
+            const post = await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId);
+            const updatedLikes = post.likedBy.filter(id => id !== userId); // Remove userId from likedBy array
 
-        await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId, {
-            likedBy: updatedLikes,
-        });
-    } catch (error) {
-        console.log('Appwrite service :: unlikePost() :: ', error);
+            await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId, {
+                likedBy: updatedLikes,
+            });
+        } catch (error) {
+            console.log('Appwrite service :: unlikePost() :: ', error);
+        }
     }
-}
 
-async unsavePost(postId, userId) {
-    try {
-        const post = await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId);
-        const updatedSavedBy = post.savedBy.filter(id => id !== userId); // Remove userId from savedBy array
+    async unsavePost(postId, userId) {
+        try {
+            const post = await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId);
+            const updatedSavedBy = post.savedBy.filter(id => id !== userId); // Remove userId from savedBy array
 
-        await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId, {
-            savedBy: updatedSavedBy,
-        });
-    } catch (error) {
-        console.log('Appwrite service :: unsavePost() :: ', error);
+            await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, postId, {
+                savedBy: updatedSavedBy,
+            });
+        } catch (error) {
+            console.log('Appwrite service :: unsavePost() :: ', error);
+        }
     }
-}
-
 
     async getLikedPosts(userId) {
         const queries = [

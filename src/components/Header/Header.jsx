@@ -256,19 +256,17 @@ const Header = () => {
     document.head.appendChild(styleSheet);
 
     return (
-        <header className='py-4 shadow-xl sticky top-0 z-50 bg-transparent bg-opacity-80 backdrop-blur-md transition-all duration-500 ease-in-out'>
+        <header className='py-0 shadow-xl sticky top-0 z-50 bg-transparent bg-opacity-80 backdrop-blur-md transition-all duration-500 ease-in-out'>
             <Container>
-                <nav className='flex items-center justify-between relative'>
+                <nav className='flex items-center justify-between relative h-44'>
                     {/* Logo and Site Name */}
                     <div className='flex items-center space-x-6'>
                         <Link to="/" className="flex items-center space-x-2">
                             <Logo 
-                                width='80px' 
-                                className='transition-all duration-700 ease-in-out transform hover:scale-125 hover:rotate-[15deg] animate-spin-slow'
+                                width='130px' 
+                                className='transition-all duration-700 ease-in-out transform hover:scale-110 relative top-2'
                             />
-                            <span className='text-2xl font-extrabold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 transition-all duration-700 ease-out hover:scale-110 hover:translate-y-2 animate-float'>
-                                {/* Poetic Odyssey */}
-                            </span>
+                            
                         </Link>
                     </div>
 

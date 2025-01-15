@@ -103,29 +103,6 @@ export class AuthService {
             throw error; // Re-throw error for handling in caller
         }
     }
-
-    // Corrected method to validate the password by re-authenticating the user
-    async validatePassword(email, password) {
-        try {
-            // First, check if a session exists
-            const currentSession = await this.account.getSession('current'); // Get the active session
-    
-            // If a session exists, log out temporarily to revalidate the password
-            if (currentSession) {
-                await this.account.deleteSessions(); // Log out the user
-            }
-    
-            // Now attempt to create a new session with the provided credentials
-            const session = await this.account.createEmailPasswordSession(email, password);
-    
-            // If the session is created successfully, the password is correct
-            return session ? true : false;
-        } catch (error) {
-            // If there's an error (either from session deletion or invalid credentials), return false
-            console.error("Error validating password:", error);
-            return false;
-        }
-    }
 }
 
 // Initialize the AuthService instance

@@ -70,11 +70,13 @@ const ChatPage = () => {
         setChatList(updatedChats);
       }
   
-      if (users.documents.length > 0) {
-        setUserList(users.documents);
+      if (users.length > 0) {
+        setUserList(users);
       }
       setLoading(false);
     } catch (err) {
+      console.log(err);
+      
       setError("Failed to load chats. Please try again later.");
       setLoading(false);
     }
@@ -257,7 +259,7 @@ useEffect(() => {
                 />
                 <p>No chats available. Select a user to start a chat.</p>
                 <ul className="user-list">
-                  {filteredUsers.slice(0, showMore ? filteredUsers.length : 5).map((user) => (
+                  {filteredUsers && filteredUsers.slice(0, showMore ? filteredUsers.length : 5).map((user) => (
                     <li className="user-card" key={user.$id} onClick={() => handleUserSelect(user.$id)}>
                       <img src={user.profilePicUrl} alt={user.name} className="profile-pic" />
                       <span>{user.name}</span>

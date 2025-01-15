@@ -21,7 +21,7 @@ function Footer() {
                     {/* Logo Section */}
                     <div className="w-full p-4 md:w-1/3">
                         <div className="flex items-center justify-center mb-4">
-                            <Logo width="80px" className="transition-all duration-500 ease-in-out transform hover:scale-125 hover:rotate-[15deg] animate-spin-slow" />
+                            <Logo width="130px" className="transition-all duration-500 ease-in-out transform hover:scale-110 animate-spin-slow" />
                             <span className="ml-4 text-2xl font-extrabold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 animate-bounce"></span>
                         </div>
                     </div>

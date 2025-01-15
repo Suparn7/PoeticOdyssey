@@ -551,7 +551,7 @@ const Profile = () => {
                                     className="text-lg  bg-transparent border-2 border-indigo-500 p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 w-full rounded-lg transform transition duration-300 hover:scale-105"
                                 />
                             </div>
-                        ) : (
+                        ) : phone && (
                             <p className="text-lg  flex items-center mb-4">
                                 <FontAwesomeIcon icon={faPhone} className="mr-2 text-indigo-500" />
                                 {phone}

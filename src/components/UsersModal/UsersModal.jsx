@@ -26,9 +26,9 @@ const UsersModal = ({ isOpen, onClose }) => {
       setLoading(true);
       try {
         const usersData = await userService.getAllUsers();
-
+        
         // Set users by filtering out the user with the specified userId
-        setUsers(usersData.documents.filter((doc) => doc.$id !== userId[0]));
+        setUsers(usersData.filter((doc) => doc.$id !== userId[0]));
 
       } catch (error) {
         console.error('Error fetching users:', error);

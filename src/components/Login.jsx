@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import authService from "../appwrite/auth";
+import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from './Button';
 import Logo from './Logo';
-import Input from './Input';
-import { useForm } from 'react-hook-form';
+import authService from "../appwrite/auth";
+import userService from '../appwrite/userService';
 import { useDispatch } from 'react-redux';
 import { login as authLogin } from '../store/authSlice';
-import '../styles/loader.css'; // Import your loader CSS
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Import the icons
-import userService from '../appwrite/userService';
 import { setUserData } from '../store/userSlice';
+import '../styles/loader.css';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
-    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const login = async (data) => {
         setError("");
@@ -28,91 +27,85 @@ const Login = () => {
             const session = await authService.login(data);
             if (session) {
                 const userData = await authService.getCurrentUser();
-                
                 if (userData) {
                     const userDetails = await userService.getUserById(userData.$id);
-                    dispatch(setUserData(userDetails));  // Set user data in the Redux store
+                    dispatch(setUserData(userDetails));
                     dispatch(authLogin({ userData }));
                 }
                 navigate("/");
-                window.scrollTo(0, 0); // Scroll to top on navigation
+                window.scrollTo(0, 0);
             }
-        } catch (error) {
-            setError(error.message);
+        } catch (err) {
+            setError(err.message || "Login failed. Please try again.");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className='flex items-center justify-center w-full min-h-screen'>
-            <div className='mx-auto w-full max-w-sm md:max-w-lg bg-white bg-opacity-10 rounded-xl shadow-lg p-6 md:p-10 border border-gray-200 transform transition-all duration-300 hover:scale-105'>
-                <div className="mb-4 flex justify-center">
-                    <span className="inline-block w-full max-w-[80px] md:max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
+        <div className="flex items-center justify-center w-full min-h-3.5">
+            <div className="relative w-11/12 max-w-lg bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-xl shadow-lg">
+                <div className="text-center mb-6">
+                    <Logo width="100px" />
                 </div>
-                <h2 className="text-center text-2xl md:text-3xl font-bold leading-tight text-gray-200 transition-colors duration-300">Sign in to your account</h2>
-                <p className="mt-2 text-center text-sm md:text-base text-gray-300 transition-colors duration-300">
-                    Don&apos;t have an account?&nbsp;
-                    <Link
-                        to="/signup"
-                        className="font-medium text-blue-400 hover:text-blue-600 transition-all duration-200 underline"
-                    >
+
+                {error && (
+                    <div className="mb-4 bg-red-600 bg-opacity-20 backdrop-blur-md rounded-lg p-4 text-red-200 text-center shadow-md">
+                        {error}
+                    </div>
+                )}
+
+                <h2 className="text-center text-3xl font-bold text-white mt-4">Sign In to Your Account</h2>
+                <p className="text-gray-300 text-center mt-2">
+                    Don’t have an account?{' '}
+                    <Link to="/signup" className="text-green-400 underline hover:text-green-500">
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className="text-red-600 mt-8 text-center animate-pulse">{error}</p>}
+
                 {loading ? (
-                    <div className="loader-overlay">
-                        <div className="loader-container">
-                            <div className="loader"></div>
-                            {/* <h2 className="loading-text">Logging in...</h2> */}
-                        </div>
+                    <div className="flex justify-center">
+                        <div className="loader"></div>
                     </div>
                 ) : (
-                    <form onSubmit={handleSubmit(login)} className='mt-6 md:mt-8'>
-                        <div className='space-y-4 md:space-y-6'>
-                            <Input
-                                label="Email: "
-                                placeholder="Enter your email"
+                    <form onSubmit={handleSubmit(login)} className="space-y-6 mt-6">
+                        <div className="relative">
+                            <input
+                                {...register("email", { required: true })}
                                 type="email"
-                                {...register("email", {
-                                    required: true,
-                                    validate: {
-                                        matchPattern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                                        "Email address must be a valid address",
-                                    }
-                                })}
-                                className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
+                                placeholder="Email"
+                                className="w-full bg-white bg-opacity-20 text-white rounded-lg py-3 px-10 focus:ring-2 focus:ring-green-400 outline-none"
                             />
-                            <div className="relative">
-                                <Input
-                                    label="Password: "
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder="Enter your password"
-                                    {...register("password", {
-                                        required: true,
-                                    })}
-                                    className="transition-all duration-200 focus:ring-2 focus:ring-blue-500 pr-10" // Add padding for the icon
-                                />
-                                <span 
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/6" // Center vertically
-                                    onClick={() => setShowPassword((prev) => !prev)} // Toggle showPassword state
-                                    aria-label={showPassword ? "Hide password" : "Show password"}
-                                >
-                                    <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} className={showPassword ? "text-teal-500" : "text-gray-500"} />
-                                </span>
-                            </div>
-                            <div >
-                            <Button
-                                type="submit"
-                                className="ml-0 w-full bg-blue-500 text-white hover:bg-blue-600 transition-all duration-200 rounded-md shadow-lg"
-                            >
-                                Sign in
-                            </Button>
-                            </div>
+                            <FontAwesomeIcon
+                                icon={faEnvelope}
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                            />
                         </div>
+
+                        <div className="relative">
+                            <input
+                                {...register("password", { required: true })}
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                className="w-full bg-white bg-opacity-20 text-white rounded-lg py-3 px-10 focus:ring-2 focus:ring-green-400 outline-none"
+                            />
+                            <FontAwesomeIcon
+                                icon={faLock}
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                            />
+                            <FontAwesomeIcon
+                                icon={showPassword ? faEye : faEyeSlash}
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
+                            />
+                        </div>
+
+                        <Button
+                            type="submit"
+                            className="ml-0 w-full bg-green-700 text-white py-3 rounded-lg hover:bg-green-600 focus:ring-2 focus:ring-green-400 transform hover:scale-105"
+                        >
+                            Sign In
+                        </Button>
                     </form>
                 )}
             </div>

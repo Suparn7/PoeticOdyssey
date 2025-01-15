@@ -54,49 +54,49 @@ export class UserService {
         }
     }
 
-    async getAllUsers() {
+    async getAllUsers(queries = []) {
         let allUsers = []; // Initialize an array to hold all users
         let totalFetchedUsers = 0; // Track the total number of posts fetched so far
         let totalUsers = 0; // Total posts available in the database (to check when to stop fetching)
         let lastFetchedUserId = null; // To keep track of the last post ID for pagination
-        return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId);
+        //return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId);
 
-        // try {
-        //     // Get the total number of posts first (to know when to stop fetching)
+        try {
+            // Get the total number of posts first (to know when to stop fetching)
             
-        //     const initialResponse = await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId, queries);
-        //     totalUsers = initialResponse.total; // Set the total available posts
+            const initialResponse = await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId, queries);
+            totalUsers = initialResponse.total; // Set the total available posts
     
-        //     // Loop until we fetch all posts
-        //     while (totalFetchedUsers < totalUsers) {
-        //         // Add the cursor to the queries if this is not the first call
-        //         if (lastFetchedUserId) {
-        //             queries.push(Query.cursorAfter(lastFetchedUserId));
-        //         }
+            // Loop until we fetch all posts
+            while (totalFetchedUsers < totalUsers) {
+                // Add the cursor to the queries if this is not the first call
+                if (lastFetchedUserId) {
+                    queries.push(Query.cursorAfter(lastFetchedUserId));
+                }
     
-        //         // Fetch posts using the query and pagination
-        //         const users = await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId, queries);
+                // Fetch posts using the query and pagination
+                const users = await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteUserInformationCollectionId, queries);
                 
-        //         // Append the newly fetched posts to the allPosts array
-        //         allUsers = [...allUsers, ...users.documents];
-        //         totalFetchedUsers += users.documents.length; // Update the total number of fetched posts
+                // Append the newly fetched posts to the allPosts array
+                allUsers = [...allUsers, ...users.documents];
+                totalFetchedUsers += users.documents.length; // Update the total number of fetched posts
     
-        //         // Get the ID of the last fetched post to use for the next page of data
-        //         if (users.documents.length > 0) {
-        //             lastFetchedUserId = users.documents[users.documents.length - 1].$id;
-        //         }
+                // Get the ID of the last fetched post to use for the next page of data
+                if (users.documents.length > 0) {
+                    lastFetchedUserId = users.documents[users.documents.length - 1].$id;
+                }
     
-        //         // If we've fetched all posts, break the loop
-        //         if (totalFetchedUsers >= totalUsers) {
-        //             break;
-        //         }
-        //     }
+                // If we've fetched all posts, break the loop
+                if (totalFetchedUsers >= totalUsers) {
+                    break;
+                }
+            }
     
-        //     return allUsers; // Return the complete list of posts
-        // } catch (error) {
-        //     console.log('Appwrite service :: getUsers() :: ', error);
-        //     return false;
-        // }
+            return allUsers; // Return the complete list of posts
+        } catch (error) {
+            console.log('Appwrite service :: getUsers() :: ', error);
+            return false;
+        }
     }
     // Get user details by userId
     async getUserById(userId) {
