@@ -1,0 +1,175 @@
+/* Card Styles */
+.modal-post-card {
+  background: #2d2d2d; /* Dark background for better text contrast */
+  color: #fff; /* White text for contrast */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Larger shadow for depth */
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.6s ease-out; /* Card fade-in animation */
+}
+
+/* Hover Effects */
+.modal-post-card:hover {
+  transform: rotate(5deg); /* Slight card rotation on hover */
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Deepens shadow */
+  filter: brightness(1.15); /* Slight brightness increase on hover */
+}
+
+/* Image Section */
+.modal-post-card-image {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto; /* Centering the image */
+  border-radius: 50%; /* Circular image */
+  border: 5px solid teal;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow around the circular image */
+  transition: transform 0.5s ease;
+  background-color: #2d2d2d; /* Fallback color to prevent black background */
+}
+
+/* Image Hover Effect */
+.modal-post-card-image:hover {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.modal-post-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Circular shape */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Placeholder if no image */
+.modal-post-card-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #6c757d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #fff;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+/* Content Section */
+.modal-post-card-content {
+  border: 2px solid teal;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px; /* Adjusted for a more balanced card */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  border-radius: 0 0 20px 20px; /* Rounded bottom corners */
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Title */
+.modal-post-card-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.modal-post-card-title:hover {
+  color: #ff6f61; /* Hover color for title */
+}
+
+/* Excerpt */
+.modal-post-card-excerpt {
+  border: 3px solid teal;
+  border-radius: 20px;
+  padding: 4px 4px;
+  font-size: 16px;
+  color: #ddd;
+  margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+  height: auto;
+}
+
+/* Read More Link */
+.post-link {
+  font-size: 18px;
+  color: #ff6f61;
+  text-align: center;
+  font-weight: bold;
+  margin-top: auto;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.post-link:hover {
+  color: #fff; /* Change color on hover */
+  transform: scale(1.1); /* Slight scale-up effect on hover */
+}
+
+/* Grid Layout for Post Cards */
+.post-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .post-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .post-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation on card load */
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Finger Animation */
+.finger-animation {
+  position: absolute;
+  top: 90%;  /* Position the finger near the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px; /* Size of the finger */
+  opacity: 0; /* Initially hidden */
+  transition: all 0.4s ease-in-out; /* Smooth transition for movement */
+}
+
+/* When hovering over the card, trigger the finger animation */
+.modal-post-card:hover .finger-animation {
+  opacity: 0.5;
+  top: 75%; /* The finger moves closer to the "Read more" */
+}
+
+/* Finger emoji or icon */
+.finger-animation::before {
+  content: '👆'; /* Using a right-pointing finger emoji */
+}

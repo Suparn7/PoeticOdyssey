@@ -1,0 +1,546 @@
+/* src/components/UserModal/usersModal.css */
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 20px;
+  width: 70%; /* Wider Modal */
+  min-width: 900px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.5s ease-in-out;
+  overflow-y: auto;
+  max-height: 95vh;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Modal Header */
+.modal-header {
+  border: 4px solid teal;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 50;
+}
+
+.modal-header:hover {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: transform 0.3s ease;
+}
+
+.modal-title:hover {
+  transform: scale(1.05);
+}
+
+.close-button {
+  background: transparent;
+  border: 2px solid teal;
+  padding: 12px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 111, 97, 0.2);
+  border-color: #ff6f61;
+  transform: scale(1.1);
+}
+
+.close-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 111, 97, 0.7);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+/* Modal Body */
+.modal-body {
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for wide cards */
+  gap: 20px;
+  padding-bottom: 20px;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.user-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+}
+
+.user-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.user-avatar-container {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.user-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.user-avatar-icon {
+  font-size: 2rem; /* Adjust the size of the icon */
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 128, 128, 0.2));
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-details:hover {
+  transform: scale(1.03); /* Slight zoom effect when hovering over the container */
+}
+
+.user-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.user-name:hover {
+  color: #008080; /* Teal hover effect */
+}
+
+.user-bio {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.user-bio:hover {
+  opacity: 1;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #008080;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98); /* Small shrink on click */
+}
+
+button:hover {
+  background-color: #004d40;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+button:focus {
+  outline: none;
+}
+
+.view-profile-btn {
+  background-color: #008080;
+}
+
+.view-posts-btn {
+  background-color: #4caf50; /* Slightly different color for differentiation */
+}
+
+.buttons-container {
+  display: flex;       
+  flex-wrap: wrap;  /* This sets up Flexbox */
+  justify-content: center; /* Optional: Adds space between buttons */
+  align-items: center;   /* Optional: Centers buttons vertically within the container */
+}
+
+.view-profile-btn, .view-posts-btn {
+  margin: 10px 10px;         /* Optional: Adds spacing between the buttons */
+}
+
+/* Animations for button hover */
+button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.4s ease;
+}
+
+button:hover::after {
+  transform: scaleX(1);
+  transform-origin: top left;
+}
+
+/* Adding a fade-in effect for content */
+.user-details {
+  animation: fadeIn 1s ease-out;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-bio {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Profile Card Styles */
+.user-profile-container {
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 128, 128, 0.2));
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.user-profile-container h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.user-profile-container p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.user-profile-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 20px;
+}
+
+.user-avatar-placeholder {
+  background-color: #444;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.back-button {
+  background-color: teal;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.search-input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Show More Button */
+.show-more-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.show-more-button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.show-more-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+}
+
+.show-more-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  max-width: 500px;
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 128, 128, 0.2));
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Profile header */
+.profile-header {
+  text-align: center;
+  animation: slideDown 1.5s ease-in-out;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.profile-header .email {
+  font-size: 1rem;
+  color: #ccc;
+  font-style: italic;
+}
+
+/* Bio */
+.bio {
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Profile Picture */
+.user-profile-pic {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto 20px auto;
+  border: 5px solid #fff;
+  transition: transform 0.3s ease;
+}
+
+.user-profile-pic:hover {
+  transform: scale(1.1);
+}
+
+/* Avatar Placeholder */
+.user-avatar-placeholder {
+  background-color: #bbb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  font-size: 2.5rem;
+  margin: 0 auto 20px auto;
+  transition: transform 0.3s ease;
+}
+
+.user-avatar-placeholder:hover {
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view-complete-profile-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none; /* Removes underline for Link */
+  font-size: 16px;
+}
+
+.view-complete-profile-btn:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 1024px) {
+  .user-cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .user-cards-container {
+    grid-template-columns: 1fr; /* 1 column for smaller screens */
+  }
+}
+

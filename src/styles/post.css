@@ -1,0 +1,399 @@
+/* Glowing Background Effect for the Overlay */
+@keyframes glowBackground {
+    0% {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+    50% {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+}
+
+.animate-glowBackground {
+    animation: glowBackground 3s ease-in-out infinite;
+}
+
+/* 3D Tilt-In Effect */
+@keyframes tiltIn {
+    0% {
+        transform: rotateY(45deg) scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-tiltIn {
+    animation: tiltIn 0.8s ease-out forwards;
+}
+
+/* Slide-in Animation */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+/* Neon Glowing Modal */
+@keyframes glowingModal {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 1);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+}
+
+.animate-glowingModal {
+    animation: glowingModal 3s ease-in-out infinite;
+}
+
+/* Neon Glowing Text */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+}
+
+.animate-neonGlow {
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+/* Pop-in Animation for Buttons */
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-popIn {
+    animation: popIn 0.5s ease-out forwards;
+}
+
+/* Button Glowing Effect */
+@keyframes buttonGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+}
+
+.animate-buttonGlow {
+    animation: buttonGlow 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Buttons */
+@keyframes neonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+}
+
+.animate-neonPulse {
+    animation: neonPulse 1.5s infinite;
+}
+
+/* Shake Animation for the Modal */
+@keyframes shakeOnLoad {
+    0% {
+        transform: translateX(-10px);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-shakeOnLoad {
+    animation: shakeOnLoad 1s ease-out;
+}
+
+/* Bounce Animation for Heading */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+
+        @keyframes borderGlow {
+          0% {
+            border-color: #3498db;  /* Light Blue Glow */
+            box-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
+          }
+          50% {
+            border-color: #1abc9c;  /* Light Green Glow */
+            box-shadow: 0 0 15px #1abc9c, 0 0 30px #1abc9c;
+          }
+          100% {
+            border-color: #3498db;  /* Light Blue Glow */
+            box-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
+          }
+        }
+
+        .glowing-border-wrapper {
+          display: flex;
+          justify-content: center;    /* Center horizontally */
+          align-items: center;        /* Center vertically */
+          min-height: 100vh;           /* Take full screen height */
+          width: 80%;                  /* Adjust width (e.g., 80% of the screen) */
+          margin: 0 auto;              /* Horizontally center the wrapper */
+          padding: 20px;               /* Add padding around the wrapper */
+          border: 2px solid transparent; /* Transparent border to see glow */
+          border-radius: 10px;         /* Optional: rounded corners */
+          animation: borderGlow 3s infinite;  /* Apply glowing animation */
+          box-sizing: border-box;      /* Ensure padding doesn't affect layout */
+        }
+
+        .glowing-border-wrapper > div {
+          width: 100%;                 /* Allow the inner content to take up full width */
+          max-width: 1200px;           /* Optional: set a max width for larger screens */
+          position: relative; /* Ensure the wrapper for the buttons behaves as expected */
+        }
+          
+
+          @keyframes flyIn {
+                0% {
+                    transform: translate(0, 0) scale(0.8);
+                    opacity: 0;
+                }
+                50% {
+                    transform: translate(0, -30px) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                }
+            }
+
+            .flying-comment {
+                animation: flyIn 0.5s ease forwards;
+                position: absolute; /* Use absolute positioning */
+                padding: 12px 20px; /* Increased padding */
+                background: linear-gradient(45deg, rgba(255, 200, 100, 0.9), rgba(100, 200, 255, 0.9));
+                color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+                font-size: 1.1rem; /* Slightly larger font */
+                z-index: 100; /* Ensure it's above other elements */
+                pointer-events: none; /* Prevent interaction during animation */
+            }
+
+            .animate-fadeIn {
+              animation: fadeIn 0.5s ease-in-out;
+            }
+
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(-10px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            .comments-container {
+              max-height: 300px; 
+              overflow-y: auto; 
+              padding: 10px;
+              border: 1px solid #ffffff; 
+              border-radius: 8px;
+              background-color: rgba(255, 255, 255, 0.1); 
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+            }
+
+            /* Custom scrollbar styles */
+            .comments-container::-webkit-scrollbar {
+              width: 12px; 
+            }
+
+            .comments-container::-webkit-scrollbar-track {
+              background: rgba(255, 255, 255, 0.1); 
+              border-radius: 10px;
+            }
+
+            .comments-container::-webkit-scrollbar-thumb {
+              background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+              border-radius: 10px; 
+              transition: background 0.3s, transform 0.2s;
+            }
+
+            .comments-container::-webkit-scrollbar-thumb:hover {
+              background: linear-gradient(180deg, #2575fc 0%, #6a11cb 100%);
+              transform: scale(1.1); /* Slightly enlarge on hover */
+            }
+
+            .comment-item {
+              margin-bottom: 10px;
+              padding: 10px;
+              border-radius: 6px;
+              background-color: rgba(0, 0, 0, 0.5); 
+              transition: background-color 0.3s;
+            }
+
+            .comment-item:hover {
+              background-color: rgba(0, 0, 0, 0.7); 
+            }
+
+           /* Light animated glass background */
+          @keyframes glassAnimation {
+            0% { background: rgba(255, 255, 255, 0.05); }
+            50% { background: rgba(255, 255, 255, 0.15); }
+            100% { background: rgba(255, 255, 255, 0.05); }
+          }
+
+          .animate-glass {
+            animation: glassAnimation 4s ease infinite;
+          }
+
+          /* Text animation */
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+
+          .animate-text {
+            background: linear-gradient(270deg, #38bdf8, #2dd4bf, #38bdf8);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+          }
+
+
+@keyframes modal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-modal {
+  animation: modal 0.3s ease-out;
+}
+
+@keyframes heart-explode {
+    0% { transform: scale(0); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+    100% { transform: scale(2); opacity: 0; }
+}
+.animate-heart-explode {
+    animation: heart-explode 0.6s ease-out forwards infinite;
+}
+
+
+.animate-save-glow {
+    box-shadow: 0 0 20px 5px rgba(255, 223, 0, 0.6);
+    animation: glow 0.6s ease-out;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 223, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 20px 5px rgba(255, 223, 0, 0.6);
+    }
+}
+
+
+
+@keyframes bookmark-slide {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(5px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-bookmark-slide {
+    animation: bookmark-slide 0.4s ease-out;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.animate-sparkle {
+    animation: sparkle 1s ease-in-out infinite;
+}
+
+
+

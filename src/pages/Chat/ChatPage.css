@@ -1,0 +1,609 @@
+
+
+
+/* Button Styling */
+/* Back Button Styling */
+.back-btn {
+    background: linear-gradient(135deg, #0084ff, #006bb3); /* Gradient from blue to a darker shade */
+    color: white;
+    padding: 5px 6px; /* Reduced size for a less intrusive button */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px; /* Slightly smaller icon */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Position the button in the top-left corner */
+    top: -1px; /* Distance from the top */
+    left: -4px; /* Distance from the left */
+    transform-origin: center center;
+    z-index: 10; /* Make sure the button is always on top */
+}
+
+/* Hover Effect */
+.back-btn:hover {
+    background: linear-gradient(135deg, #006bb3, #0084ff); /* Reverse gradient on hover */
+    transform: translateY(-5px) scale(1.1); /* Lift and scale the button */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Active Effect */
+.back-btn:active {
+    background: linear-gradient(135deg, #005a8c, #006bb3); /* Darker gradient when clicked */
+    transform: translateY(2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Rotate Animation on Hover */
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Rotate on hover */
+.back-btn:hover {
+    animation: rotateAnimation 1s ease-in-out;
+}
+
+/* Modal Container Adjustments */
+.chatBtnWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: Add a glow effect on hover */
+.back-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+
+/* Search Input */
+.searchInput {
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.searchInput:focus {
+    border-color: #0084ff;
+    box-shadow: 0 0 12px rgba(0, 132, 255, 0.5);
+    outline: none;
+}
+
+/* Modal Content */
+.chatList-modal-content {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Common Styles for Sections */
+.search-section, .chat-section {
+    flex: 1;
+    overflow-y: auto;
+    max-width: 48%;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #2c3e50, #1f3347);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 20px 80px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+     /* Hide scrollbar for webkit browsers (Chrome, Safari, etc.) */
+  -ms-overflow-style: none;  /* Hides scrollbar in IE and Edge */
+  scrollbar-width: none;  /* Hides scrollbar in Firefox */
+}
+
+.search-section::-webkit-scrollbar, .chat-section::-webkit-scrollbar {
+    display: none;  /* Hides the scrollbar in Chrome, Safari, and other Webkit-based browsers */
+  }
+  
+
+/* User List Styling */
+.user-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    animation: slideUp 1s ease-in-out;
+}
+
+/* User Card Styling */
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(145deg, #4d5a66, #34495e);
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    min-width: 80px;
+}
+
+.user-card:hover {
+    transform: scale(1.12);
+    box-shadow: 0 10px 20px rgba(197, 47, 47, 0.4);
+}
+
+.profile-pic {
+    width: 45px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Chat List Styling */
+.chat-list {
+    list-style-type: none;
+    padding: 0;
+    animation: fadeIn 1s ease-out;
+}
+
+.chat-card {
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background: linear-gradient(145deg, #4d5a66, #34495e);
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+}
+
+.chat-card:hover {
+    transform: scale(1.12);
+    box-shadow: 0 10px 20px rgba(197, 47, 47, 0.4);
+  
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-transform: capitalize;
+}
+
+.recent-message {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Sent message has warm tones */
+    padding: 8px 12px;
+    border-radius: 20px;
+    min-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Scrollable Sections */
+.search-section, .chat-section {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Fade-In Animation for Cards */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-Up Animation for User Cards */
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Bounce Animation for Button */
+@keyframes bounceIn {
+    0% { transform: scale(0.5); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Blink Animation for Dots */
+@keyframes blink {
+  0%, 100% {
+    content: '';
+  }
+  50% {
+    content: '.';
+  }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+  50% { box-shadow: 0 0 20px rgba(76, 175, 80, 1); }
+  100% { box-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+}
+
+/* Input Box Styling */
+.searchInput {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchInput:focus {
+    border-color: #2196f3;
+    outline: none;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+.searchInput::placeholder {
+    font-style: italic;
+    color: #aaa;
+}
+
+/* Modal Content with Transition */
+.chatList-modal-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+.chatList-modal-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effects on Chat List */
+.chat-list li:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transform: scale(1.12);
+    box-shadow: 0 10px 20px rgba(197, 47, 47, 0.4);
+    transition: all 0.2s ease;
+}
+
+/* Chat Loading Text Container */
+.chat-loading-text-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-loading-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+  }
+  
+  .chat-loading-letter {
+    display: inline-block;
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes textGlow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #6a11cb, 0 0 15px #2575fc, 0 0 20px #6a11cb;
+    }
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #6a11cb, 0 0 30px #2575fc, 0 0 40px #6a11cb;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .chat-loading-text-container {
+      padding: 15px;
+      border-radius: 8px;
+    }
+  
+    .chat-loading-text {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chat-loading-text-container {
+      padding: 10px;
+    }
+  
+    .chat-loading-text {
+      font-size: 1.5rem;
+    }
+  }
+  
+
+.chat-loading-text span {
+    display: inline-block;
+    animation: letterBounce 1.5s ease-in-out infinite;
+}
+
+/* Fade-in effect for center position */
+@keyframes fadeInCenter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes textFadeInOut {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@keyframes letterBounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Chat List - Profile Picture */
+.chat-card-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .profile-pic-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    left: 5px;
+  }
+  
+  .profile-pic {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  /* User Search List - Profile Picture */
+  .user-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .user-card .profile-pic-container {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .user-card .profile-pic {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .user-list {
+    margin-top: 10px;
+    padding-left: 0;
+  }
+  
+  .searchInput {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  /* Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust back button position on smaller screens */
+    .back-btn {
+        top: 5px;
+        left: 5px;
+        font-size: 18px; /* Smaller back button */
+    }
+
+    /* Adjust chat modal layout */
+    .chatBtnWrapper {
+        padding: 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+        max-width: 500px; 
+    }
+
+    .searchInput {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .chatList-modal-content {
+        flex-direction: column; 
+        padding: 15px;
+    }
+
+    /* Adjust chat sections on mobile */
+    .search-section, .chat-section {
+        max-width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        max-height: 300px; 
+    }
+
+    .user-list {
+        grid-template-columns: repeat(1, 1fr); /* Stack user cards */
+        gap: 10px;
+    }
+
+    .chat-list {
+        margin-top: 10px;
+    }
+
+    .chat-card {
+        margin-bottom: 10px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .profile-pic {
+        width: 35px;
+    }
+
+    .chat-header .chat-name {
+        font-size: 16px;
+    }
+
+    .chat-header .recent-message {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .searchInput {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .chat-card {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .profile-pic {
+        width: 30px;
+    }
+
+    .chat-header .chat-name {
+        font-size: 14px;
+    }
+
+    .chat-header .recent-message {
+        font-size: 10px;
+    }
+}
+  
+  
+
+

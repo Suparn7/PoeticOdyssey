@@ -1,0 +1,102 @@
+.new_footer_area {
+    background-color: #1a1a1a; /* Dark background */
+    color: #fff; /* White text */
+}
+
+.f_widget h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.f_list li {
+    margin-bottom: 10px;
+}
+
+.f_list li a {
+    color: #ccc; /* Light gray links */
+    transition: color 0.3s;
+}
+
+.f_list li a:hover {
+    color: #fff; /* White on hover */
+}
+
+.footer_bottom {
+    background-color: #111; /* Darker bottom */
+    padding: 20px 0;
+}
+
+.footer_bg_one, .footer_bg_two {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.footer_bg_one {
+    top: 0;
+    left: 0;
+}
+
+.footer_bg_two {
+    bottom: 0;
+    right: 0;
+}
+
+.btn_get {
+    background: #ff5f5f; /* Button background */
+    color: #fff; /* Button text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded button */
+    transition: background 0.3s;
+}
+
+.btn_get:hover {
+    background: #ff3f3f; /* Darker on hover */
+}
+
+.footer_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); /* Lighter opacity */
+}
+
+.footer_pulse {
+    animation: pulse-footer 2s infinite ease-in-out;
+}
+
+@keyframes pulse-footer {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    0% {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+    }
+    50% {
+      box-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+    }
+    100% {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+    }
+  }
+  
+  .hover\:glow:hover {
+    animation: glow 1.5s infinite alternate;
+  }
+  

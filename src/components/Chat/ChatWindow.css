@@ -1,0 +1,673 @@
+/* General Layout */
+.chat-window {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background: linear-gradient(145deg, #2c3e50, #1f3347);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 20px 80px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1000;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-window:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Header */
+.chat-header {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-profile-container {
+  display: flex;
+}
+
+.chat-header-name {
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+
+.chat-header:hover {
+  color: #ff6347;
+  text-shadow: 2px 2px 8px rgba(255, 99, 71, 0.6);
+  transform: translateY(-5px);
+}
+
+/* Profile Picture Container */
+.profile-pic-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Message List Styling */
+.message-list {
+  flex-grow: 1;
+  overflow-y: scroll; /* Allow vertical scrolling */
+  margin-bottom: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 1.5s ease-in-out; /* Smooth fade-in for the list */
+  
+  /* Hide scrollbar for webkit browsers (Chrome, Safari, etc.) */
+  -ms-overflow-style: none;  /* Hides scrollbar in IE and Edge */
+  scrollbar-width: none;  /* Hides scrollbar in Firefox */
+}
+
+.message-list::-webkit-scrollbar {
+  display: none;  /* Hides the scrollbar in Chrome, Safari, and other Webkit-based browsers */
+}
+
+/* Message Styling */
+.message {
+  padding: 16px;
+  border-radius: 22px;
+  font-size: 16px;
+  position: relative;
+  min-width: 130px;
+  max-width: 75%;
+  animation: slideIn 0.6s ease-out;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px; /* Adjusted margin to make space for the reactions */
+  word-wrap: break-word; /* Ensure long words break properly */
+  width: auto; /* Auto width for the message to adjust to text content */
+  height: auto; /* Auto height to fit content */
+  max-width: 80%; /* Ensure message doesn't exceed screen width */
+}
+
+/* Sent Message Styling */
+.message.sent {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Sent message has warm tones */
+  color: white;
+  align-self: flex-end;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 20px;
+  transform: translateX(0);
+}
+
+.message.sent:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Received Message Styling */
+.message.received {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Received message with cool blue gradient */
+  color: white;
+  align-self: flex-start;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  border-radius: 20px;
+  transform: translateX(0);
+  width: auto;
+  height: auto;
+}
+
+.message.received:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover Effect for Messages */
+.message:hover {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Sender/Receiver Name (Header) */
+.message-header {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+  right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff; /* White for better contrast */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sender Name Color */
+.message-sender {
+  color: #ffffff; /* White color for the sender's name */
+}
+
+/* Animation for Messages */
+@keyframes slideIn {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Image Preview inside Messages */
+.image-preview {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.preview-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Section */
+.chat-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  padding: 14px 20px;
+  background: linear-gradient(145deg, #2c3e50, #1f3347); /* Gradient background for input area */
+  border-radius: 35px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.1); /* Glow effect */
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-input:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.2); /* Enhance glow on hover */
+}
+
+/* Input Field */
+.chat-input input {
+  width: 75%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.5px;
+}
+
+.chat-input input:focus {
+  background-color: #f4f4f4;
+  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 99, 71, 0.7); /* Glow effect on focus */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Send Button with FontAwesome Icon */
+.chat-input button {
+  width: 18%;
+  padding: 14px;
+  background-color: #ff6347; /* Warm color for the button */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effects for button */
+.chat-input button:hover {
+  background-color: #e55347;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Send Icon inside the button */
+.chat-input button svg {
+  font-size: 22px; /* Icon size */
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.chat-input button:hover svg {
+  transform: rotate(45deg); /* Rotate the icon on hover for a cool effect */
+}
+
+/* Optional: Focus effect on the entire input section */
+.chat-input:focus-within {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 99, 71, 0.6); /* Glow around the input area */
+}
+
+/* Small icon in bottom left corner */
+/* Reactions Container (Below the message card) */
+/* Reaction Buttons */
+.reaction-buttons {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-top: 8px;
+  margin-bottom: 10px; /* Added margin at the bottom to space out reactions */
+}
+
+.reaction-buttons span {
+  background: transparent;
+  padding: 4px 8px;
+  font-size: 18px; /* Smaller font size */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reaction-buttons span:hover {
+  background-color: #f0f0f0;
+}
+
+.reaction-buttons span.selected {
+  background-color: #ddd;
+  border-color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Ensure reactions are aligned properly and below the message */
+.message .reaction-buttons {
+  position: absolute;
+  bottom: -30px; /* Adjust the bottom value to bring it just below the message card */
+  left: 16px; /* Align to the left within the message container */
+}
+
+/* Animations */
+
+/* Fade In */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Glow Pulse Animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 99, 71, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+  }
+}
+
+/* Hover Effect */
+@keyframes hoverEffect {
+  0% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.profile-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+.reaction-options {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: -40px; /* Slide up from below */
+  width: 100%;
+  transition: all 0.3s ease;
+  transform: translateY(100%);
+}
+
+.reaction-icon:hover + .reaction-options {
+  transform: translateY(0);
+}
+
+/* Style for message container */
+.message {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Reaction icons container (hidden by default) */
+.message-reactions .reaction-options {
+  display: none;
+  position: absolute;
+  bottom: -30px; /* Position reactions slightly below the message */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+/* Show reaction icons on hover */
+.message:hover .reaction-options {
+  display: flex;
+}
+
+/* Reaction icon button */
+.reaction-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Display selected reactions next to message */
+.reaction-display {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+/* Ensure messages have padding and look clean */
+.message p {
+  padding: 5px;
+  margin: 0;
+}
+
+
+
+
+/* Show reaction options when clicked */
+/* Style for reaction options */
+
+.reaction-options span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.reaction-options span:hover {
+  color: #007bff;
+}
+
+/* Style for Remove Reaction */
+.remove-reaction {
+  cursor: pointer;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.remove-reaction:hover {
+  text-decoration: underline;
+}
+
+.reaction-display {
+  font-size: 18px;
+}
+
+/* Reaction options container with sliding effect */
+/* Style for reaction options */
+/* Style for reaction options (with blackish transparent card) */
+.reaction-options {
+  position: absolute;
+  bottom: 30px;
+  right: 5px;
+  display: flex;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 2;
+  transition: transform 0.3s ease-in-out;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  max-width: 200px; /* Max width to ensure the reactions fit */
+  bottom: 4px;
+}
+
+/* Scrollable reactions container */
+.reaction-options {
+  display: flex;
+  flex-wrap: nowrap; /* Keep all reactions in a row */
+  padding: 5px;
+  gap: 5px;
+}
+
+/* Hide the scrollbar but still make it scrollable */
+.reaction-options::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.reaction-options::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Transparent scrollbar */
+}
+
+/* Style for the reaction icons */
+.reaction-options span {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: white; /* Make icons white for contrast */
+}
+
+.reaction-options span:hover {
+  transform: scale(1.2); /* Slight scale-up on hover */
+}
+
+/* Smiley icon */
+.reaction-smiley {
+  cursor: pointer;
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-size: 1.5rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.reaction-smiley:hover {
+  color: #f0f0f0;
+}
+
+/* Wrapper for each reaction item */
+.reaction-item {
+  position: relative; /* Ensure the profile picture is positioned relative to this container */
+  display: inline-flex;
+  align-items: center; /* Vertically center the emoji */
+  justify-content: center; /* Horizontally center the emoji */
+  font-size: 1.5rem; /* Adjust size for the emoji */
+  gap: 0px;  /* No gap between the emoji and the profile pic directly */
+  padding: 2px 6px; /* Padding for a clean, non-cramped look */
+  border-radius: 8px; /* Rounded corners for smoothness */
+}
+
+/* Hover effect for reaction item */
+.reaction-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Profile picture next to the reaction */
+
+
+/* Profile picture positioning */
+.reaction-profile-pic {
+  position: absolute;
+  bottom: 0; /* Align to bottom */
+  right: 0; /* Align to right */
+  width: 18px; /* Small size for the profile picture */
+  height: 18px;
+  border-radius: 50%; /* Circle shape */
+  object-fit: cover; /* Ensure the image fills the circle */
+  border: 2px solid #fff; /* Optional border around the profile picture */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Optional shadow for emphasis */
+}
+
+
+/* Adjusting the reaction emoji */
+.reaction-display {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem; /* Slightly larger emoji for visibility */
+}
+
+
+/* Message list - make sure content is scrollable but hide scrollbar */
+.message-list {
+  overflow-y: scroll; /* Allow scrolling */
+  padding-right: 10px; /* Add some space for scrollbar */
+}
+
+.message-list::-webkit-scrollbar {
+  width: 0px; /* Hide scrollbar */
+}
+
+/* Add some space around the message container */
+.message {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For small devices like phones */
+@media screen and (max-width: 600px) {
+  .chat-window {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .chat-header {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .message {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .chat-input {
+    padding: 12px 15px;
+  }
+
+  .chat-input input {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  .chat-input button {
+    width: 20%;
+  }
+}
+
+/* For tablets and medium-sized devices */
+@media screen and (max-width: 768px) {
+  .chat-window {
+    width: 85%;
+    padding: 25px;
+  }
+
+  .chat-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .message {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .chat-input input {
+    width: 75%;
+    font-size: 15px;
+  }
+}
+
+/* For large screens and desktops */
+@media screen and (min-width: 1024px) {
+  .chat-window {
+    max-width: 650px;
+  }
+
+  .chat-header {
+    font-size: 28px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+
+  .chat-input input {
+    font-size: 16px;
+  }
+}
+
+
+

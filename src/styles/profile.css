@@ -1,0 +1,136 @@
+/* profile.css */
+
+/* Background gradient for the profile container */
+.profile-container {
+    background: linear-gradient(145deg, #2c3e50, #1f3347);
+}
+
+/* Box styles for the profile card */
+.profile-card {
+    background: linear-gradient(to right, #5f6f92, #5d4b7b, #2c3e50);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    overflow-x: hidden;
+    transition: all 0.5s;
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Button style adjustments */
+.profile-button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Follow button states */
+.follow-button {
+    background-color: #3498db;
+    color: white;
+}
+
+.follow-button:disabled {
+    background-color: #95a5a6;
+}
+
+/* Modal background */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Input fields and textarea with border and hover effects */
+.input-field,
+.textarea-field {
+    background: transparent;
+    border: 2px solid #3498db;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+.textarea-field {
+    resize: none;
+    height: 150px;
+}
+
+/* Hover effects for profile picture */
+.profile-pic {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border: 4px solid #3498db;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1) rotate(6deg);
+}
+
+/* Profile sections styling */
+.profile-section {
+    background: linear-gradient(to right, #66ccff, #b3c4d9);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info .info-item .icon {
+    color: #2980b9;
+    margin-right: 0.5rem;
+}
+
+

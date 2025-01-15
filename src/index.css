@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* index.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://images.pexels.com/photos/2098427/pexels-photo-2098427.jpeg') no-repeat center center fixed; /* Set the background image */
+    background-size: cover; /* Cover the entire viewport */
+    color: #fff; /* Optional: set a default text color */
+    overflow-x: hidden;
+  }
+
+/* Custom scrollbar with gradient */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(100, 100, 250, 0.6), rgba(0, 0, 150, 0.8));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(100, 100, 250, 0.8), rgba(0, 0, 150, 1));
+}
+
+  
+  

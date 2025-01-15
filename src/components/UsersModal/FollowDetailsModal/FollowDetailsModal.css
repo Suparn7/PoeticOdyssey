@@ -1,0 +1,132 @@
+/* Overlay for modal */
+.follow-modal-overlay {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  /* Modal container */
+  .follow-modal-container {
+    background: linear-gradient(to right, #00bcd4, #008080); /* Teal gradient */
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden; /* Hide the overflow initially */
+    max-height: 90vh; /* Limit modal height */
+  }
+  
+  /* Modal hover effect */
+  .follow-modal-container:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Modal title */
+  .follow-modal-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Follow list styling */
+  .follow-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+    max-height: 300px; /* Allow scrolling */
+    overflow-y: auto;
+  }
+  
+  .follow-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .follow-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* User image */
+  .follow-user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid white;
+  }
+  
+  /* User name */
+  .follow-user-name {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  /* Close button */
+  .follow-modal-close-btn {
+    background-color: #ff4b5c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .follow-modal-close-btn:hover {
+    background-color: #e03c49;
+  }
+  
+  /* Empty state card */
+  .empty-state-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .empty-state-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* Show more button */
+  .show-more-btn {
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+  
+  .show-more-btn:hover {
+    background-color: #008080;
+  }
+  
