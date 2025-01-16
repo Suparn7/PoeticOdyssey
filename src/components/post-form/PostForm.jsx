@@ -211,7 +211,7 @@ const PostForm = ({ post }) => {
   }
 
   return (
-    <div className="min-h-3.5 relative">
+    <div className="min-h-screen relative">
       {showConfirm && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50 animate__animated animate__fadeIn animate__faster">
           <div

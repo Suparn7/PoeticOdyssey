@@ -82,9 +82,9 @@ const MyPosts = () => {
 
   if (posts && posts.length === 0) {
     return (
-      <div className='w-full py-8'>
+      <div className='w-full py-8 '>
         <Container>
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full ">
             <div className="relative bg-gray-800 text-white p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 w-full max-w-md">
               <h1 className="text-2xl text-center mb-4">
                 {`Please `}
