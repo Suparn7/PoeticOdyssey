@@ -14,6 +14,8 @@ import bcrypt from 'bcryptjs';
 import service from '../appwrite/config';
 import conf from '../conf/conf';
 import '../styles/loader.css';
+import Container from './container/Container';
+
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -83,6 +85,18 @@ const Signup = () => {
         }
     };
 
+    if (loading) {
+        return (
+          <Container>
+            <div className="loader-overlay">
+              <div className="loader-container">
+                <div className="loader"></div>
+              </div>
+            </div>
+          </Container>
+        );
+      }
+
     return (
         <div className="flex items-center justify-center w-full min-h-3.5">
             <div className="relative w-11/12 max-w-2xl bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-xl shadow-lg">
@@ -99,7 +113,7 @@ const Signup = () => {
 
                 {/* Static Error Message */}
                 {error && (
-                    <div className="w-full bg-red-500 bg-opacity-20 backdrop-blur-md rounded-lg p-4 text-red-200 text-center shadow-md mb-6">
+                    <div className="w-full bg-red-700 bg-opacity-20 backdrop-blur-md rounded-lg p-4 text-red-200 text-center shadow-md mb-6">
                         {error}
                     </div>
                 )}

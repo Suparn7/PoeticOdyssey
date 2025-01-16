@@ -29,7 +29,7 @@ const Post = () => {
     const [newComment, setNewComment] = useState('');
     const [comments, setComments] = useState([]);
     const [showMoreComments, setShowMoreComments] = useState(false);
-    const [author, setAuthor] = useState(''); // State for author
+    const [author, setAuthor] = useState([]); // State for author
     const [authorLoading, setAuthorLoading] = useState(true); // State for author loading
     const [notification, setNotification] = useState({ message: '', type: '', visible: false });
     const [flyingComment, setFlyingComment] = useState('');
@@ -77,8 +77,8 @@ const Post = () => {
                       setSavedByUser(post.savedBy?.includes(userData?.$id));
   
                       // Fetch the user who made the post
-                      const authorDetails = await authService.fetchUserById(post.userId);
-                      setAuthor(authorDetails?.name || 'Unknown User'); // Set author name
+                      const authorDetails = await userService.getUserById(post.userId);
+                      setAuthor(authorDetails);
   
                       // Parse comments
                       const parsedComments = (post.comments || []).map(commentString => {
@@ -94,7 +94,7 @@ const Post = () => {
   
                       // Fetch user names for each comment
                       const commentsWithNames = await Promise.all(sortedComments.map(async (comment) => {
-                          const commentUser = await authService.fetchUserById(comment.userId);
+                          const commentUser = await userService.getUserById(comment.userId);
                           return {
                               ...comment,
                               userName: commentUser?.name || 'Unknown User',
@@ -265,7 +265,7 @@ const Post = () => {
       await service.addComment(post.$id, comment, dispatch);
       
       // Fetch user details for the newly added comment
-      const user = await authService.fetchUserById(comment.userId);
+      const user = await userService.getUserById(comment.userId);
       const commentWithUserName = {
           ...comment,
           userName: user?.name || 'Unknown User'
@@ -318,22 +318,35 @@ const Post = () => {
       <div className="glowing-border-wrapper">
         <div className={`py-8 flex flex-col items-center justify-center ${fade ? 'fade-in' : 'fade-out'}`} style={{ color: '#fff' }}>
             {isAuthor && (
-              <div className='absolute top-[-26px] flex space-x-3 z-10'>
+              <div className="absolute top-[-26px] flex space-x-4 z-10">
+              {/* Edit Button */}
               <Link to={`/edit-post/${post.$id}`}>
                 <Button
-                  className='flex items-center justify-center p-3 bg-gradient-to-r from-green-200 via-teal-500 to-teal-800 text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-125 transition duration-300 transform hover:rotate-[360deg]'
+                  className="group relative flex items-center justify-center p-4 bg-gradient-to-r from-green-400 via-teal-500 to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-110"
                 >
-                  <FontAwesomeIcon icon={faEdit} className="text-white text-3xl animate-pulse" />
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className="text-white text-2xl group-hover:scale-125 transform transition-transform duration-300"
+                  />
+                  {/* Ripple Effect */}
+                  <span className="absolute w-0 h-0 bg-white opacity-30 rounded-full group-hover:w-20 group-hover:h-20 transition-all duration-300"></span>
                 </Button>
               </Link>
             
+              {/* Delete Button */}
               <Button
-                className='flex items-center justify-center p-3 bg-gradient-to-r from-red-500 via-orange-700 to-red-600 text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-125 transition duration-300 transform hover:rotate-[360deg] '
+                className="group relative flex items-center justify-center p-4 bg-gradient-to-r from-red-500 via-orange-600 to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-110"
                 onClick={confirmDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="text-white text-3xl animate-pulse" />
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className="text-white text-2xl group-hover:scale-125 transform transition-transform duration-300"
+                />
+                {/* Ripple Effect */}
+                <span className="absolute w-0 h-0 bg-white opacity-30 rounded-full group-hover:w-20 group-hover:h-20 transition-all duration-300"></span>
               </Button>
-              </div>
+            </div>
+            
             )}
 
             <Container className="relative z-10">
@@ -349,11 +362,14 @@ const Post = () => {
                     padding: '10px 20px',
                   }}
                 >
-                  <span
-                    className="text-lg font-bold text-white bg-clip-text"
-                  >
-                    Author: {author}
-                  </span>
+                    <Link to={`/profile/${author.userId}`} className="profile-link">
+                        <span
+                            className="text-lg font-bold text-white bg-clip-text"
+                        >
+                        Author: {author.name}
+                        </span>
+                    </Link>
+                  
                 </div>
 
                 {/* Share Buttons */}
@@ -598,7 +614,7 @@ const Post = () => {
                 ) : (
                     comments.slice(0, showMoreComments ? comments.length : 3).map((comment, index) => (
                         <div key={index} className="relative animate-fadeIn break-words bg-white bg-opacity-30 backdrop-blur-lg border border-white rounded-lg shadow-lg p-4">
-                            <div className="flex justify-between items-start">
+                            <div className="flex justify-between items-start max-w-80">
                                 <p className="text-gray-300 font-semibold">
                                     <strong>
                                         {comment.userName} {comment.userId === userData.$id && "(You)"}
@@ -633,7 +649,7 @@ const Post = () => {
             {/* Confirmation Modal */}
             {showConfirm && (
               <div className="absolute inset-0 top-[-463px] flex items-center justify-center z-20">
-              <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 text-white rounded-lg p-8 shadow-2xl max-w-lg w-full z-60 transform transition-all animate-slideInLeft animate-popIn animate-glowingModal animate-tiltIn">
+              <div className=" relative -top-96 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 text-white rounded-lg p-8 shadow-2xl max-w-lg w-full z-60 transform transition-all animate-slideInLeft animate-popIn animate-glowingModal animate-tiltIn">
                   <h2 className="text-2xl font-extrabold mb-6 text-center text-yellow-400 animate-bounce animate-neonGlow">
                       Are you sure you want to delete this post?
                   </h2>

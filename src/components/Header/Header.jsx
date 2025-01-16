@@ -193,7 +193,6 @@ const Header = () => {
         right: 0,
         marginTop: '0.5rem',
         width: '20rem',  // Adjusted for small screens
-        background: 'rgba(230, 230, 250, 0.85)',
         backdropFilter: 'blur(10px)',
         borderRadius: '0.5rem',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
@@ -206,18 +205,18 @@ const Header = () => {
 
     const styles = `
         .notification-container {
-  max-height: 300px; /* Limit the height */
-  overflow-y: auto;  /* Enable vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  padding: 10px;
-  position: relative;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
-}
+            max-height: 300px; /* Limit the height */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            padding: 10px;
+            position: relative;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+        }
 
-.notification-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
-}
+        .notification-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+        }
         .notification-container::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1); 
             border-radius: 10px;
@@ -263,7 +262,7 @@ const Header = () => {
                     <div className='flex items-center space-x-6'>
                         <Link to="/" className="flex items-center space-x-2">
                             <Logo 
-                                width='130px' 
+                                width='100px' 
                                 className='transition-all duration-700 ease-in-out transform hover:scale-110 relative top-2'
                             />
                             
@@ -271,128 +270,116 @@ const Header = () => {
                     </div>
 
                    {/* Hamburger Icon for Small Screens */}
-                    <div ref={menuRef} className="relative flex md:hidden">
-                        {/* Notification Bell */}
-                        {authStatus && (
-                            <div className="relative">
-                                <button
-                                    ref={notificationBellRefForSmScreen} // Attach the ref here
-                                    className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-full shadow-xl transform hover:scale-125 hover:rotate-12 transition-all duration-300 animate-pulse"
-                                    onClick={handleNotificationToggleForSmallScreen} 
-                                    aria-label="Toggle notifications"
-                                >
-                                    <span className="text-2xl text-white">🔔</span>
-                                </button>
-
-                                {(notifications.length > 0) && (
-                                    <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-2 py-1 animate-bounce">
-                                        {notifications.length}
-                                    </span>
-                                )}
-                            </div>
-                        )}
-
-                        {/* Notifications Modal */}
-                        {/* Notifications Modal */}
-                        {notificationsVisibleForSmallScreen && (
-                            <div
-                                ref={notificationRefForSmScreen}
-                                style={{
-                                ...notificationModalStyle,
-                                left: '-2px',
-                                width: '350px',
-                                transform: 'translateX(-50%)',
-                                top: '100%', // Adjust position relative to the bell icon
-                                }}
-                                className="relative bg-gray-800 text-white rounded-lg shadow-xl z-50 p-4"
-                            >
-                                {/* Close Icon */}
-                                <button
-                                onClick={() => setNotificationsVisibleForSmallScreen(false)} // Close modal on click
-                                className="absolute -top-2 -right-2 text-white text-sm bg-red-500 rounded-full p-1 py-0 hover:bg-red-700 transition-transform transform hover:scale-110"
-                                aria-label="Close notifications"
-                                >
-                                <FontAwesomeIcon icon={faTimes} />
-                                </button>
-
-                                {/* Notification List */}
-                                <ul className="notification-container flex flex-col space-y-2">
-                                {notifications.length > 0 ? (
-                                    notifications.map((notification, index) => {
-                                    const parts = notification.split('|||');
-                                    const notificationId = parts[0];
-                                    const notificationText = parts[1];
-                                    const postId = parts[parts.length - 3];
-                                    const fromUserId = parts[parts.length - 2];
-
-                                    return (
-                                        <li
-                                        key={index}
-                                        className="notification-item bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-lg hover:bg-gradient-to-l hover:scale-105 transition-all duration-500 ease-out flex items-center justify-between px-4 py-2"
-                                        >
-                                        <span
-                                            onClick={() => handleNotificationClick(postId, fromUserId)}
-                                            className="flex-grow cursor-pointer"
-                                        >
-                                            {notificationText}
-                                        </span>
-                                        <button
-                                            onClick={() => handleDeleteNotification(notificationId)}
-                                            className="bg-gradient-to-r from-red-600 to-red-800 text-white ml-2 rounded-full px-4 py-2 transition-transform duration-300 hover:scale-110"
-                                            aria-label="Delete notification"
-                                        >
-                                            <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem' }} />
-                                        </button>
-                                        </li>
-                                    );
-                                    })
-                                ) : (
-                                    <li className="text-center bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg px-4 py-2 transition-transform duration-300 hover:scale-105">
-                                    No notifications
-                                    </li>
-                                )}
-                                </ul>
-                            </div>
-                        )}
-
-                        <button 
-                            className="text-white bg-gradient-to-l from-indigo-500 to-purple-600 text-2xl transition-all duration-300 transform hover:scale-125 hover:rotate-12 animate-popIn"
-                            onClick={handleMenuToggle}
-                            aria-label="Toggle navigation"
+                    <div ref={menuRef} className="relative flex md:hidden items-center space-x-4">
+                    {/* Notification Bell */}
+                    {authStatus && (
+                        <div className="relative">
+                        <button
+                            ref={notificationBellRefForSmScreen}
+                            className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-full shadow-xl hover:scale-110 transition-transform duration-300"
+                            onClick={handleNotificationToggleForSmallScreen}
+                            aria-label="Toggle notifications"
                         >
-                            ☰
+                            <span className="text-2xl text-white">🔔</span>
                         </button>
-                        {menuVisible && (
-                            <div className="w-80 absolute right-0 mt-20 bg-gradient-to-br from-slate-600 to-slate-900 bg-opacity-90 rounded-lg shadow-lg p-4 z-50 transition-all duration-500 ease-out animate-slideIn max-h-[80vh] overflow-y-auto">
-                                <ul className='flex flex-col space-y-3'>
-                                    {/* Rows for Navigation Items */}
-                                    {navItems.map((item, index) => 
-                                        item.active && (
-                                            <div key={item.name} className="flex justify-between">
-                                                <li className="flex-1">
-                                                    <button 
-                                                        onClick={() => handleNavigation(item.slug)} 
-                                                        className='ml-0 w-full text-center text-white bg-gradient-to-l from-indigo-500 to-purple-600 rounded-full shadow-xl transition-all duration-500 ease-out hover:scale-110 hover:rotate-6 hover:bg-gradient-to-r px-6 py-3 animate-slideUp'>
-                                                        {item.name}
-                                                    </button>
-                                                </li>
-                                                
-                                            </div>
-                                        )
-                                        
-                                    )}
-                                    {/* Logout Button */}
-                                    {authStatus && (
-                                        <li onClick={handleLogout}>
-                                            <LogoutBtn />
-                                        </li>
-                                    )}
-                                </ul>
-                            </div>
-                        )}
 
-                        
+                        {notifications.length > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1 animate-bounce">
+                            {notifications.length}
+                            </span>
+                        )}
+                        </div>
+                    )}
+
+                    {/* Notifications Modal */}
+                    {notificationsVisibleForSmallScreen && (
+                        <div
+                        ref={notificationRefForSmScreen}
+                        className="absolute min-w-80 bg-gray-800 bg-opacity-90 text-white rounded-lg shadow-lg p-4 top-full left-3/4 transform -translate-x-full mt-2 z-50 max-w-xs w-full"
+                        >
+                        {/* <button
+                            onClick={() => setNotificationsVisibleForSmallScreen(false)}
+                            className="absolute top-2 right-2 text-white text-sm bg-red-500 rounded-full p-1 hover:bg-red-700 transition-transform transform hover:scale-110"
+                            aria-label="Close notifications"
+                        >
+                            ✖
+                        </button> */}
+
+                        <ul className="flex flex-col space-y-2">
+                            {notifications.length > 0 ? (
+                            notifications.map((notification, index) => {
+                                const parts = notification.split("|||");
+                                const notificationId = parts[0];
+                                const notificationText = parts[1];
+                                const postId = parts[parts.length - 3];
+                                const fromUserId = parts[parts.length - 2];
+
+                                return (
+                                <li
+                                    key={index}
+                                    className="flex items-center justify-between bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg px-4 py-2 shadow hover:scale-105 transition-transform duration-300"
+                                >
+                                    <span
+                                    onClick={() => handleNotificationClick(postId, fromUserId)}
+                                    className="flex-grow cursor-pointer"
+                                    >
+                                    {notificationText}
+                                    </span>
+                                    <button
+                                    onClick={() => handleDeleteNotification(notificationId)}
+                                    className="bg-red-600 text-white rounded-full px-2 py-1 hover:bg-red-700 transition-transform duration-300 hover:scale-110"
+                                    aria-label="Delete notification"
+                                    >
+                                    🗑
+                                    </button>
+                                </li>
+                                );
+                            })
+                            ) : (
+                            <li className="text-center bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg px-4 py-2">
+                                No notifications
+                            </li>
+                            )}
+                        </ul>
+                        </div>
+                    )}
+
+                    {/* Hamburger Menu */}
+                    <button
+                        className="flex items-center justify-center w-14 h-14 bg-gradient-to-l from-indigo-500 to-purple-600 rounded-full shadow-xl hover:scale-110 transition-transform duration-300"
+                        onClick={handleMenuToggle}
+                        aria-label="Toggle navigation"
+                    >
+                        ☰
+                    </button>
+
+                    {/* Menu Modal */}
+                    {menuVisible && (
+                        <div className="absolute right-0 mt-24 -top-3 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg p-4 pr-9 z-50 max-w-xs">
+                        <ul className="flex flex-col space-y-3">
+                            {navItems.map(
+                            (item, index) =>
+                                item.active && (
+                                <li key={index}>
+                                    <button
+                                    onClick={() => handleNavigation(item.slug)}
+                                    className="w-full text-center text-white bg-gradient-to-l from-indigo-500 to-purple-600 rounded-lg shadow-lg px-4 py-2 hover:scale-105 transition-transform duration-300"
+                                    >
+                                    {item.name}
+                                    </button>
+                                </li>
+                                )
+                            )}
+                            {authStatus && (
+                            <li>
+                                <LogoutBtn handleMenuToggle={handleMenuToggle}   />
+                            </li>
+                            )}
+                        </ul>
+                        </div>
+                    )}
                     </div>
+
 
                     {/* Navigation Links and Notification Bell for Medium and Large Screens */}
                     <div className="hidden md:flex items-center space-x-6">

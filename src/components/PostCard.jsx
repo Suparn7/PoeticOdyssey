@@ -5,9 +5,10 @@ import appWriteService from '../appwrite/config';
 import authService from '../appwrite/auth';
 import '../styles/loader.css'; // Import the CSS file for loader styles
 import '../styles/PostCard.css'; // Import the new CSS file
+import userService from '../appwrite/userService';
 
 const PostCard = ({ $id, title, content, featuredImage, userId }) => {
-  const [author, setAuthor] = useState('');
+  const [author, setAuthor] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
   const [isDarkTheme, setIsDarkTheme] = useState(true); // State to manage theme for each card
@@ -15,8 +16,8 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
   useEffect(() => {
     const fetchAuthor = async () => {
       try {
-        const user = await authService.fetchUserById(userId);
-        setAuthor(user.name); // Set the author's name in state
+        const user = await userService.getUserById(userId);
+        setAuthor(user); // Set the author in state
       } catch (error) {
         console.error("Failed to fetch author:", error);
       } finally {
@@ -78,7 +79,9 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
           <h2 className="post-title">{title}</h2>
 
           {/* Author */}
-          <div className="author">{author}</div>
+          <Link to={`/profile/${author.userId}`} className="profile-link">
+            <div className="author">{author.name}</div>
+          </Link>
 
           {/* Content */}
           <div className="content">

@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { login as authLogin } from '../store/authSlice';
 import { setUserData } from '../store/userSlice';
 import '../styles/loader.css';
+import Container from './container/Container';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -42,6 +43,19 @@ const Login = () => {
         }
     };
 
+    if (loading) {
+        return (
+          <Container>
+            <div className="loader-overlay">
+              <div className="loader-container">
+                <div className="loader"></div>
+              </div>
+            </div>
+          </Container>
+        );
+      }
+
+      
     return (
         <div className="flex items-center justify-center w-full min-h-3.5">
             <div className="relative w-11/12 max-w-lg bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-xl shadow-lg">
@@ -50,7 +64,7 @@ const Login = () => {
                 </div>
 
                 {error && (
-                    <div className="mb-4 bg-red-600 bg-opacity-20 backdrop-blur-md rounded-lg p-4 text-red-200 text-center shadow-md">
+                    <div className="mb-4 bg-red-700 bg-opacity-20 backdrop-blur-md rounded-lg p-4 text-red-200 text-center shadow-md">
                         {error}
                     </div>
                 )}

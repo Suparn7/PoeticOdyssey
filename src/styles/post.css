@@ -185,6 +185,15 @@
           }
         }
 
+        .profile-link {
+            color: #007bff;
+            text-decoration: none;
+          }
+          
+          .profile-link:hover {
+            text-decoration: underline;
+          }
+          
         .glowing-border-wrapper {
           display: flex;
           justify-content: center;    /* Center horizontally */

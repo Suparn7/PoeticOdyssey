@@ -117,7 +117,7 @@
   align-self: flex-start;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: 20px;
   border-radius: 20px;
   transform: translateX(0);
@@ -150,6 +150,11 @@
 /* Sender Name Color */
 .message-sender {
   color: #ffffff; /* White color for the sender's name */
+  min-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  word-wrap: break-word;
 }
 
 /* Animation for Messages */

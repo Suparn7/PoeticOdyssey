@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { setUserData } from '../store/userSlice';
 import userService from '../appwrite/userService';
 import authService from '../appwrite/auth';
-import logo from "../images/Logo.png";
+import logo from "../images/PoeticOddyseyLogoBg.png";
 import conf from '../conf/conf';
 import "../styles/loader.css"
 
@@ -274,7 +274,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen ">
+        <div className="flex justify-center items-center min-h-3.5 ">
             <div className="rounded-lg shadow-xl p-6 w-11/12 max-w-lg overflow-x-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl relative"
             style={{
                 background: "rgba(0, 0, 0, 0)",

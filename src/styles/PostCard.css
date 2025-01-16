@@ -34,6 +34,15 @@
   }
 }
 
+.profile-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
 /* Post Card */
 .post-card {
   border-radius: 20px;

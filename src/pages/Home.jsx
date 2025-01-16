@@ -13,6 +13,8 @@ import UsersModal from '../components/UsersModal/UsersModal.jsx'; // Import the 
 const Home = () => {
   const authStatus = useSelector((state) => state.auth.status);
   const user = useSelector((state) => state.auth.userData); 
+  const userInfoData = useSelector((state) => state.user.userData);
+  
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false); // State for animation
@@ -161,7 +163,7 @@ const Home = () => {
         {/* Hero Section */}
         <div className="hero-section text-white">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Welcome to Our Blog, <span className="username-animated">{user?.name || "User"}</span></h1>
+            <h1 className="text-4xl font-bold mb-4">Welcome to Our Blog, <span className="username-animated">{userInfoData?.name || "User"}</span></h1>
             <p className="text-xl">Dive into the latest articles, insights, and stories.</p>
           </div>
         </div>

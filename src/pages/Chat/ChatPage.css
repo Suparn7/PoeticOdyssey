@@ -169,11 +169,17 @@
 }
 
 .user-name {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     color: white;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    word-wrap: break-word;
+    font-size: 16px;
 }
 
 /* Chat List Styling */

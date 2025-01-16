@@ -12,6 +12,8 @@ import { faImage, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const ChatPage = () => {
   const user = useSelector((state) => state.auth.userData);
+  const userInfo = useSelector((state) => state.user.userData);
+
   const [chatId, setChatId] = useState(null);
   const [userId, setUserId] = useState(user.$id);
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -76,7 +78,6 @@ const ChatPage = () => {
       setLoading(false);
     } catch (err) {
       console.log(err);
-      
       setError("Failed to load chats. Please try again later.");
       setLoading(false);
     }
@@ -260,7 +261,7 @@ useEffect(() => {
                 <p>No chats available. Select a user to start a chat.</p>
                 <ul className="user-list">
                   {filteredUsers && filteredUsers.slice(0, showMore ? filteredUsers.length : 5).map((user) => (
-                    <li className="user-card" key={user.$id} onClick={() => handleUserSelect(user.$id)}>
+                    <li className="user-card break-words" key={user.$id} onClick={() => handleUserSelect(user.$id)}>
                       <img src={user.profilePicUrl} alt={user.name} className="profile-pic" />
                       <span>{user.name}</span>
                     </li>

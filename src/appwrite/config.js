@@ -3,6 +3,7 @@ import { Client, Databases, Storage, Query, ID } from "appwrite";
 import authService from "./auth";
 import { fetchNotifications } from "../store/notificationSlice"; // Import the fetch action
 import axios from 'axios';
+import userService from "./userService";
 
 
 export class Service {
@@ -168,8 +169,8 @@ export class Service {
                 likedBy: updatedLikes,
             });
     
-            const user = await authService.fetchUserById(userId);
-            const postUser = await authService.fetchUserById(post.userId);
+            const user = await userService.getUserById(userId);
+            const postUser = await userService.getUserById(post.userId);
 
             const userName = user.name;
     
@@ -264,8 +265,8 @@ export class Service {
                 comments: existingComments,
             });
     
-            const user = await authService.fetchUserById(comment.userId);
-            const postUser = await authService.fetchUserById(post.userId);
+            const user = await userService.getUserById(comment.userId);
+            const postUser = await userService.getUserById(post.userId);
             const userName = user.name;
             
             if (comment.userId !== post.userId) {
