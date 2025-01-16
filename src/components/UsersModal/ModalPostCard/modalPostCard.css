@@ -1,10 +1,10 @@
 /* Card Styles */
 .modal-post-card {
-  background: #2d2d2d; /* Dark background for better text contrast */
+  background: rgba(255, 255, 255, 0.1);
   color: #fff; /* White text for contrast */
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Larger shadow for depth */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.5s ease;
   position: relative;
@@ -14,8 +14,8 @@
 
 /* Hover Effects */
 .modal-post-card:hover {
-  transform: rotate(5deg); /* Slight card rotation on hover */
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4); /* Deepens shadow */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   filter: brightness(1.15); /* Slight brightness increase on hover */
 }
 
@@ -62,17 +62,19 @@
 
 /* Content Section */
 .modal-post-card-content {
-  border: 2px solid teal;
+  border: 1px solid teal;
   border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 180px; /* Adjusted for a more balanced card */
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.1), rgba(0, 128, 128, 0.2));
   border-radius: 0 0 20px 20px; /* Rounded bottom corners */
   position: relative;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Title */
@@ -90,9 +92,8 @@
 
 /* Excerpt */
 .modal-post-card-excerpt {
-  border: 3px solid teal;
   border-radius: 20px;
-  padding: 4px 4px;
+  padding: 6px 6px;
   font-size: 16px;
   color: #ddd;
   margin-top: 10px;
@@ -101,6 +102,10 @@
   text-overflow: ellipsis;
   transition: color 0.3s ease;
   height: auto;
+  background: linear-gradient(135deg, rgba(2, 8, 8, 0.1), rgba(195, 211, 211, 0.2));
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Read More Link */

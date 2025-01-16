@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appWriteService from '../appwrite/config';
 import authService from '../appwrite/auth';
@@ -19,6 +21,7 @@ import ShareButtons from '../components/ShareButtons.jsx';
 import { deletePost as deletePostAction } from '../store/postSlice.js'; 
 import "../styles/post.css"
 import userService from '../appwrite/userService.js';
+
 
 const Post = () => {
     const [post, setPost] = useState(null);
@@ -315,8 +318,8 @@ const Post = () => {
     }
 
     return post ? (
-      <div className="glowing-border-wrapper">
-        <div className={`py-8 flex flex-col items-center justify-center ${fade ? 'fade-in' : 'fade-out'}`} style={{ color: '#fff' }}>
+      <div className="glowing-border-wrapper ">
+        <div className={`py-8 flex flex-col items-center  justify-center ${fade ? 'fade-in' : 'fade-out'}`} style={{ color: '#fff' }}>
             {isAuthor && (
               <div className="absolute top-[-26px] flex space-x-4 z-10">
               {/* Edit Button */}
@@ -349,9 +352,9 @@ const Post = () => {
             
             )}
 
-            <Container className="relative z-10">
+            <Container className="relative z-10 ">
               <div
-                className={`bg-white bg-opacity-30 backdrop-blur-lg border border-white rounded-lg shadow-lg p-4 max-w-3xl w-full mx-auto transition-transform duration-500 ${
+                className={`bg-white bg-opacity-10 backdrop-blur-lg border border-white rounded-lg shadow-lg p-4 max-w-3xl w-full mx-auto transition-transform duration-500 ${
                   fade ? 'animate-fadeIn' : ''
                 }`}
               >
@@ -393,25 +396,56 @@ const Post = () => {
                 </h1>
 
                 <div
-                  className="text-center px-4 text-gray-200 mt-2 comments-container shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105"
-                  style={{
-                    maxHeight: '300px',
-                    overflowY: 'auto',
-                    overflowX: 'hidden', // Prevent horizontal scrolling
-                    padding: '10px',
-                    border: '1px solid #ffffff',
-                    borderRadius: '8px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                    wordWrap: 'break-word'
-                  }}
-                >
-                  {parse(post.content)}
-                </div>
+                    className="text-center px-3 text-gray-200 mt-2 comments-container shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
+                    style={{
+                        maxHeight: '300px',
+                        overflowY: 'auto',
+                        overflowX: 'hidden', // Prevent horizontal scrolling
+                        padding: '10px',
+                        border: '1px solid #ffffff',
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                        wordWrap: 'break-word',
+                    }}
+                    onCopy={(e) => {
+                        
+                        if (author.userId !== userData.$id) {
+                        e.preventDefault(); // Prevent the copy action
+                        const { clientX, clientY } = e.nativeEvent;
+                        toast.warn('Only the author can copy the content.', {
+                            autoClose: 3000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            icon: '⚠️',
+                            style: {
+                            position: 'absolute',
+                            top: `${clientY - 50}px`, // Slightly above the cursor position
+                            left: `${clientX}px`,
+                            borderRadius: '8px',
+                            background: 'linear-gradient(135deg, #ff7eb3, #ff758c)',
+                            color: '#fff',
+                            padding: '16px',
+                            fontFamily: 'Arial, sans-serif',
+                            fontSize: '16px',
+                            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                            },
+                        });
+                        
+                        }
+                    }}
+                    >
+                    {parse(post.content)}
+                    </div>
+                <ToastContainer />
+
+
 
               {/* Liked by Section */}
               <div className="mt-4 relative">
-                  <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-4 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105">
+                  <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105">
                       {likedByUsers && likedByUsers.length > 0 ? (
                           <>
                               <div className="flex flex-wrap items-center space-x-2">
@@ -577,8 +611,31 @@ const Post = () => {
             </div>
 
             {/* Comment Section */}
-            <Container className='mt-8 max-w-2xl mx-auto'>
-                <h2 className="text-2xl font-bold text-yellow-300 text-center">Comments</h2>
+            <Container className='mt-8 max-w-3xl'>
+            <div className='-mb-3'
+            style={{
+                display: 'flex', // Enables flexbox for centering
+                justifyContent: 'center', // Centers horizontally
+                alignItems: 'center', // Centers vertically within the div
+            }}
+            >
+            <h3
+                className="text-2xl font-bold text-yellow-300"
+                style={{
+                padding: '10px 20px', // Adds spacing around the text
+                backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent black background
+                backdropFilter: 'blur(10px)', // Glass effect
+                borderRadius: '8px', // Smooth rounded corners
+                textAlign: 'center', // Ensures the text is centered within the element
+                display: 'inline-block', // Fits the background snugly to the text
+                minWidth: "225px"
+                }}
+            >
+                Comments
+            </h3>
+            </div>
+
+
                 
                 <form onSubmit={handleCommentSubmit} className="flex flex-col mt-4 p-4 bg-black bg-opacity-20 backdrop-blur-lg rounded-lg shadow-lg">
                   <textarea

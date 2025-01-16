@@ -193,7 +193,7 @@
           .profile-link:hover {
             text-decoration: underline;
           }
-          
+
         .glowing-border-wrapper {
           display: flex;
           justify-content: center;    /* Center horizontally */
@@ -201,11 +201,11 @@
           min-height: 100vh;           /* Take full screen height */
           width: 80%;                  /* Adjust width (e.g., 80% of the screen) */
           margin: 0 auto;              /* Horizontally center the wrapper */
-          padding: 20px;               /* Add padding around the wrapper */
           border: 2px solid transparent; /* Transparent border to see glow */
           border-radius: 10px;         /* Optional: rounded corners */
           animation: borderGlow 3s infinite;  /* Apply glowing animation */
           box-sizing: border-box;      /* Ensure padding doesn't affect layout */
+          margin-top: 30px;
         }
 
         .glowing-border-wrapper > div {
