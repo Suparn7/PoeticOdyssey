@@ -33,7 +33,7 @@ const Login = () => {
                     dispatch(setUserData(userDetails));
                     dispatch(authLogin({ userData }));
                 }
-                navigate("/");
+                navigate("/PoeticOdyssey");
                 window.scrollTo(0, 0);
             }
         } catch (err) {
@@ -72,7 +72,7 @@ const Login = () => {
                 <h2 className="text-center text-3xl font-bold text-white mt-4">Sign In to Your Account</h2>
                 <p className="text-gray-300 text-center mt-2">
                     Don’t have an account?{' '}
-                    <Link to="/signup" className="text-green-400 underline hover:text-green-500">
+                    <Link to="/PoeticOdyssey/signup" className="text-green-400 underline hover:text-green-500">
                         Sign Up
                     </Link>
                 </p>

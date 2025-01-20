@@ -83,13 +83,13 @@ function Footer() {
                         <h3 className="text-lg font-semibold text-white mb-4 text-center animate-bounce">Useful Links</h3>
                         <ul className="text-center">
                             <li className="mb-2">
-                                <Link to="/" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Terms & Conditions</Link>
+                                <Link to="/PoeticOdyssey" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Terms & Conditions</Link>
                             </li>
                             <li className="mb-2">
-                                <Link to="/" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Privacy Policy</Link>
+                                <Link to="/PoeticOdyssey" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Privacy Policy</Link>
                             </li>
                             <li>
-                                <Link to="/" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Help Center</Link>
+                                <Link to="/PoeticOdyssey" className="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">Help Center</Link>
                             </li>
                         </ul>
                     </div>

@@ -180,7 +180,7 @@ const UsersModal = ({ isOpen, onClose }) => {
   </div>
     <h2>{fetchUserProfile.name}</h2>
     <p className="email">{fetchUserProfile.email}</p>
-    <Link to={`profile/${fetchUserProfile.$id}`}>
+    <Link to={`/PoeticOdyssey/profile/${fetchUserProfile.$id}`}>
         <button>
         View Complete Profile
         </button>

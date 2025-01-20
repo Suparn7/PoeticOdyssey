@@ -132,7 +132,7 @@ const Home = () => {
           <div className="flex items-center justify-center h-full">
             <div className="relative bg-gray-800 text-white p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 w-full max-w-md">
               <h1 className="text-2xl text-center mb-4">
-                Please <Link to="/login" className="text-blue-400 underline hover:text-blue-300">Login</Link> to see or create a Post.
+                Please <Link to="/PoeticOdyssey/login" className="text-blue-400 underline hover:text-blue-300">Login</Link> to see or create a Post.
               </h1>
             </div>
           </div>
@@ -173,7 +173,7 @@ const Home = () => {
         <button onClick={() => setIsModalOpen(true)} className="ml-0  cta-button">
             View All Users
           </button>
-          <Link to="/all-posts">
+          <Link to="/PoeticOdyssey/all-posts">
             <button className="explore-button ml-0 ">
               Explore All Posts
             </button>
@@ -221,7 +221,7 @@ const Home = () => {
         <div className="cta-section text-center mt-24 animate__animated animate__fadeIn animate__delay-4s">
           <h2 className="text-3xl font-semibold mb-6">Want to Share Your Ideas?</h2>
           <p className="text-xl mb-6">Create your own post and share with the world.</p>
-          <Link to="/add-post">
+          <Link to="/PoeticOdyssey/add-post">
             <button onClick={() => window.scrollTo(0,0)} className="cta-button ml-0 break-words">
               Create a Post
             </button>

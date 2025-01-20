@@ -196,7 +196,7 @@ const ChatWindow = ({ chatId, userId, receiverId, receiverName, receiverProfileP
               className="profile-pic"
             />
           </div>
-          <Link to={`/profile/${receiverId}`} className="profile-link">
+          <Link to={`/PoeticOdyssey/profile/${receiverId}`} className="profile-link">
             {receiverName}
           </Link>
         </div>

@@ -33,13 +33,13 @@ const Header = () => {
 
 
     const navItems = [
-        { name: "Home", slug: "/", active: true },
-        { name: "Login", slug: "/login", active: !authStatus },
-        { name: "Signup", slug: "/signup", active: !authStatus },
-        { name: "Add Post", slug: "/add-post", active: authStatus },
-        { name: "My Posts", slug: "/my-posts", active: authStatus },
-        { name: "Profile", slug: "/profile", active: authStatus },
-        { name: "Chats", slug: "/chat", active: authStatus },
+        { name: "Home", slug: "/PoeticOdyssey", active: true },
+        { name: "Login", slug: "/PoeticOdyssey/login", active: !authStatus },
+        { name: "Signup", slug: "/PoeticOdyssey/signup", active: !authStatus },
+        { name: "Add Post", slug: "/PoeticOdyssey/add-post", active: authStatus },
+        { name: "My Posts", slug: "/PoeticOdyssey/my-posts", active: authStatus },
+        { name: "Profile", slug: "/PoeticOdyssey/profile", active: authStatus },
+        { name: "Chats", slug: "/PoeticOdyssey/chat", active: authStatus },
     ];
 
     const handleMenuToggle = () => {
@@ -152,9 +152,9 @@ const Header = () => {
 
     const handleNotificationClick = (postId, fromUserId) => {
         if (postId !== "null") {
-            navigate(`/post/${postId}`);
+            navigate(`/PoeticOdyssey/post/${postId}`);
         } else {
-            navigate(`/profile/${fromUserId}`);
+            navigate(`/PoeticOdyssey/profile/${fromUserId}`);
         }
         setNotificationsVisible(false);
         setNotificationsVisibleForSmallScreen(false)
@@ -260,7 +260,7 @@ const Header = () => {
                 <nav className='flex items-center justify-between relative h-44'>
                     {/* Logo and Site Name */}
                     <div className='flex items-center space-x-6'>
-                        <Link to="/" className="flex items-center space-x-2">
+                        <Link to="/PoeticOdyssey" className="flex items-center space-x-2">
                             <Logo 
                                 width='100px' 
                                 className='transition-all duration-700 ease-in-out transform hover:scale-110 relative top-2'

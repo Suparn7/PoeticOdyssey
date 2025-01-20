@@ -37,13 +37,13 @@ const ModalPostCard = ({ post, onClick }) => {
         )}
       </div>
       <div className="modal-post-card-content">
-        <Link to={`/post/${post.$id}`} className="post-link">
+        <Link to={`/PoeticOdyssey/post/${post.$id}`} className="post-link">
           <h5 className="modal-post-card-title">{post.title}</h5>
         </Link>
         <div className="modal-post-card-excerpt">
           {parse(post.content.length > 20 ? `${post.content.substring(0, 20)}...` : post.content)}
         </div>
-        <Link to={`/post/${post.$id}`} className="post-link">
+        <Link to={`/PoeticOdyssey/post/${post.$id}`} className="post-link">
           Read more
         </Link>
       </div>

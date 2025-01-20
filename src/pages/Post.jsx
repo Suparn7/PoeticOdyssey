@@ -116,7 +116,7 @@ const Post = () => {
                       );
                       setLikedByUsers(likedByUserDetails);
                   } else {
-                      navigate("/");
+                      navigate("/PoeticOdyssey");
                   }
               } catch (error) {
                   console.error("Error fetching post or users:", error);
@@ -173,7 +173,7 @@ const Post = () => {
                 appWriteService.deleteFile(post.featuredImage);
                 // Dispatch the action to remove the post from the Redux store
                 dispatch(deletePostAction(post.$id));
-                navigate("/");
+                navigate("/PoeticOdyssey");
             });
     };
 
@@ -323,7 +323,7 @@ const Post = () => {
             {isAuthor && (
               <div className="absolute top-[-26px] flex space-x-4 z-10">
               {/* Edit Button */}
-              <Link to={`/edit-post/${post.$id}`}>
+              <Link to={`/PoeticOdyssey/edit-post/${post.$id}`}>
                 <Button
                   className="group relative flex items-center justify-center p-4 bg-gradient-to-r from-green-400 via-teal-500 to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-110"
                 >
@@ -365,7 +365,7 @@ const Post = () => {
                     padding: '10px 20px',
                   }}
                 >
-                    <Link to={`/profile/${author.userId}`} className="profile-link">
+                    <Link to={`/PoeticOdyssey/profile/${author.userId}`} className="profile-link">
                         <span
                             className="text-lg font-bold text-white bg-clip-text"
                         >

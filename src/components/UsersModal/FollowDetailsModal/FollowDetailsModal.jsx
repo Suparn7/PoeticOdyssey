@@ -28,7 +28,7 @@ const FollowDetailsModal = ({ isOpen, closeModal, modalType, followers, followin
         ) : (
           <ul className="follow-list">
             {list.slice(0, visibleCount).map((user, index) => (
-              <Link to={`/profile/${user.$id}`} onClick={closeModal} key={index}>
+              <Link to={`/PoeticOdyssey/profile/${user.$id}`} onClick={closeModal} key={index}>
                 <li className="follow-item">
                   <img
                     src={user.profilePicUrl}

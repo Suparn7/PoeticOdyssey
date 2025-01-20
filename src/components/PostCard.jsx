@@ -57,7 +57,7 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
         )}
 
         <Link
-          to={`/post/${$id}`}
+          to={`/PoeticOdyssey/post/${$id}`}
           style={{
             textDecoration: 'none',
             color: 'inherit',
@@ -79,7 +79,7 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
           <h2 className="post-title">{title}</h2>
 
           {/* Author */}
-          <Link to={`/profile/${author.userId}`} className="profile-link">
+          <Link to={`/PoeticOdyssey/profile/${author.userId}`} className="profile-link">
             <div className="author">{author.name}</div>
           </Link>
 

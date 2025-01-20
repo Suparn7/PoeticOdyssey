@@ -73,7 +73,7 @@ const Signup = () => {
                 const currentUser = await authService.getCurrentUser();
                 if (currentUser) dispatch(login({ userData: currentUser }));
 
-                navigate("/");
+                navigate("/PoeticOdyssey");
                 window.scrollTo(0, 0);
             } else {
                 setError("There was an error creating your user profile.");
@@ -105,7 +105,7 @@ const Signup = () => {
                     <h2 className="text-3xl font-bold text-white mt-4">Create an Account</h2>
                     <p className="text-gray-300 ">
                             Already have an account?{' '}
-                            <Link to="/login" className="text-green-400 underline hover:text-green-500">
+                            <Link to="/PoeticOdyssey/login" className="text-green-400 underline hover:text-green-500">
                                 Sign In
                             </Link>
                     </p>

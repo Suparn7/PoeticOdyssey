@@ -127,7 +127,7 @@ const PostForm = ({ post }) => {
         
         if (dbPost) {
             await userService.addPostCreated(dbPost.userId, dbPost.$id, dispatch)
-            navigate(`/post/${dbPost.$id}`);
+            navigate(`/PoeticOdyssey/post/${dbPost.$id}`);
         }
         
     } catch (error) {
@@ -176,9 +176,9 @@ const PostForm = ({ post }) => {
     setShowConfirm(false);
     // Optionally add logic to discard changes or reset the form if needed
     if(post){
-      navigate(`/post/${post.$id}`);
+      navigate(`/PoeticOdyssey/post/${post.$id}`);
     }else{
-      navigate('/')
+      navigate('/PoeticOdyssey')
     }
   };
 

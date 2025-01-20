@@ -24,7 +24,7 @@ const LogoutBtn = ({handleMenuToggle}) => {
         dispatch(clearNotification()); // Clear notifications
         setShowConfirm(false); // Close confirmation modal
         handleMenuToggle()
-        navigate("/login");
+        navigate("/PoeticOdyssey/login");
     };
 
     const cancelLogout = () => {

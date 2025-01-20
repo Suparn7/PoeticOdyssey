@@ -88,7 +88,7 @@ const MyPosts = () => {
             <div className="relative bg-gray-800 text-white p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 w-full max-w-md">
               <h1 className="text-2xl text-center mb-4">
                 {`Please `}
-                <Link to="/add-post" className="text-blue-400 underline hover:text-blue-300">
+                <Link to="/PoeticOdyssey/add-post" className="text-blue-400 underline hover:text-blue-300">
                   Add 
                 </Link>
                 {` a post to publish.`}

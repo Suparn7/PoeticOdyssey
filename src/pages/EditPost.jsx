@@ -19,11 +19,11 @@ const EditPost = () => {
           if (fetchedPost) {
             setPost(fetchedPost);
           } else {
-            navigate("/");
+            navigate("/PoeticOdyssey");
           }
         } catch (error) {
           console.error("Error fetching post:", error);
-          navigate("/");
+          navigate("/PoeticOdyssey");
         } finally {
           setLoading(false); // Set loading to false after fetching
         }

@@ -28,21 +28,21 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: '/login', element: <Protected authentication={false}><Login /></Protected> },
-      { path: '/signup', element: <Protected authentication={false}><SignUp /></Protected> },
-      { path: '/all-posts', element: <Protected authentication><AllPosts /></Protected> },
-      { path: '/add-post', element: <Protected authentication><AddPost /></Protected> },
-      { path: '/edit-post/:slug', element: <Protected authentication><EditPost /></Protected> },
-      { path: '/post/:slug', element: <Protected authentication><Post /></Protected> },
-      { path: '/my-posts', element: <Protected authentication><MyPosts /></Protected> },
-      { path: '/profile', element: <Protected authentication><Profile /></Protected> },
-      { path: '/profile/:slug', element: <Protected authentication><Profile /></Protected> },
-      { path: '/liked-posts', element: <Protected authentication><LikedPosts /></Protected> },
-      { path: '/saved-posts', element: <Protected authentication><SavedPosts /></Protected> },
-      { path: '/user-posts', element: <Protected authentication><UserPosts /></Protected> },
-      { path: '/user-posts/:slug', element: <Protected authentication><UserPosts /></Protected> },
-      { path: '/chat', element: <Protected authentication><ChatPage /></Protected> },
+      { path: '/PoeticOdyssey', element: <Home /> },
+      { path: '/PoeticOdyssey/login', element: <Protected authentication={false}><Login /></Protected> },
+      { path: '/PoeticOdyssey/signup', element: <Protected authentication={false}><SignUp /></Protected> },
+      { path: '/PoeticOdyssey/all-posts', element: <Protected authentication><AllPosts /></Protected> },
+      { path: '/PoeticOdyssey/add-post', element: <Protected authentication><AddPost /></Protected> },
+      { path: '/PoeticOdyssey/edit-post/:slug', element: <Protected authentication><EditPost /></Protected> },
+      { path: '/PoeticOdyssey/post/:slug', element: <Protected authentication><Post /></Protected> },
+      { path: '/PoeticOdyssey/my-posts', element: <Protected authentication><MyPosts /></Protected> },
+      { path: '/PoeticOdyssey/profile', element: <Protected authentication><Profile /></Protected> },
+      { path: '/PoeticOdyssey/profile/:slug', element: <Protected authentication><Profile /></Protected> },
+      { path: '/PoeticOdyssey/liked-posts', element: <Protected authentication><LikedPosts /></Protected> },
+      { path: '/PoeticOdyssey/saved-posts', element: <Protected authentication><SavedPosts /></Protected> },
+      { path: '/PoeticOdyssey/user-posts', element: <Protected authentication><UserPosts /></Protected> },
+      { path: '/PoeticOdyssey/user-posts/:slug', element: <Protected authentication><UserPosts /></Protected> },
+      { path: '/PoeticOdyssey/chat', element: <Protected authentication><ChatPage /></Protected> },
       { path: '*', element: <NotFound /> },
     ],
   },
@@ -59,7 +59,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} basename='/PoeticOdyssey' />
+        <RouterProvider router={router} />
       </PersistGate>
     </Provider>
   </StrictMode>

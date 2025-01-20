@@ -168,7 +168,7 @@ useEffect(() => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    navigate('/');
+    navigate('/PoeticOdyssey');
   };
 
   const handleUserSelect = async (selectedUserId) => {
