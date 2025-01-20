@@ -20,14 +20,16 @@ const MyPosts = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const queries = [
-        Query.equal("userId", userInfoData.userId)
-      ];
-      const postsData = await appWriteService.getPosts(queries);
-      if (postsData) {
-        setPosts(postsData);
+      if(userInfoData){
+        const queries = [
+          Query.equal("userId", userInfoData.userId)
+        ];
+        const postsData = await appWriteService.getPosts(queries);
+        if (postsData) {
+          setPosts(postsData);
+        }
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchPosts();

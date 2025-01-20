@@ -51,7 +51,7 @@ const Profile = () => {
             setLoading(true); // Start loading
     
             try {
-                if (profileId.slug && userInfoData.$id !== profileId.slug) {
+                if (userInfoData && profileId.slug && userInfoData.$id !== profileId.slug) {
                     setIsAuthUser(false)
                     // For someone else's profile, fetch their data
                     const userProfileDetails = await userService.getUserById(profileId.slug);

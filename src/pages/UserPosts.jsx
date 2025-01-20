@@ -19,21 +19,23 @@ const UserPosts = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    const fetchLikedPosts = async () => {
-      setLoading(true);
-      let userPostsData;
-      if(profileId?.slug){
-        userPostsData = await appWriteService.getUserPosts(profileId.slug);
-      }else{
-        userPostsData = await appWriteService.getUserPosts(userData.$id);
-      }
-      if (userPostsData) {
-        setPosts(userPostsData.documents);
-      }
-      setLoading(false);
-    };
-
-    fetchLikedPosts();
+    if(userData || profileId?.slug){
+      const fetchLikedPosts = async () => {
+        setLoading(true);
+        let userPostsData;
+        if(profileId?.slug){
+          userPostsData = await appWriteService.getUserPosts(profileId.slug);
+        }else{
+          userPostsData = await appWriteService.getUserPosts(userData.$id);
+        }
+        if (userPostsData) {
+          setPosts(userPostsData.documents);
+        }
+        setLoading(false);
+      };
+  
+      fetchLikedPosts();
+    }
   }, [userData]);
 
    // Only calculate pagination if posts have been fetched

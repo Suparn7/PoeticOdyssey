@@ -18,16 +18,18 @@ const LikedPosts = () => {
 
 
   useEffect(() => {
-    const fetchLikedPosts = async () => {
-      setLoading(true);
-      const likedPostsData = await appWriteService.getLikedPosts(userData.$id);
-      if (likedPostsData) {
-        setPosts(likedPostsData.documents);
-      }
-      setLoading(false);
-    };
-
-    fetchLikedPosts();
+    if(userData){
+      const fetchLikedPosts = async () => {
+        setLoading(true);
+        const likedPostsData = await appWriteService.getLikedPosts(userData.$id);
+        if (likedPostsData) {
+          setPosts(likedPostsData.documents);
+        }
+        setLoading(false);
+      };
+  
+      fetchLikedPosts();
+    }
   }, [userData]);
 
   // Only calculate pagination if posts have been fetched

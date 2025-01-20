@@ -18,6 +18,7 @@ const SavedPosts = () => {
   const postsPerPage = 4; // Number of posts to show per page
 
   useEffect(() => {
+   if(userData){
     const fetchSavedPosts = async () => {
       setLoading(true);
       const savedPostsData = await appWriteService.getSavedPosts(userData.$id);
@@ -28,6 +29,7 @@ const SavedPosts = () => {
     };
 
     fetchSavedPosts();
+   }
   }, [userData]);
 
   // Only calculate pagination if posts have been fetched

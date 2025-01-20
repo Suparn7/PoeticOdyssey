@@ -5,7 +5,7 @@ import authService from './appwrite/auth';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { login, logout } from './store/authSlice';
-import ErrorBoundary from './components/ErrorBoundary'; // Import ErrorBoundary
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'; // Import ErrorBoundary
 
 function App() {
     const [loading, setLoading] = useState(true);
