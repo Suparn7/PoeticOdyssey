@@ -25,7 +25,7 @@ import ChatPage from './pages/Chat/Chat.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/PoeticOdyssey',
+    path: '/',
     element: <App />,
     children: [
       { path: '/', element: <Home /> },
@@ -59,7 +59,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router}  />
+        <RouterProvider router={router} basename='/PoeticOdyssey' />
       </PersistGate>
     </Provider>
   </StrictMode>
