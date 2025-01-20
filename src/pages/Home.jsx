@@ -184,7 +184,7 @@ const Home = () => {
         <div className="small-posts-slider mt-12">
           <h2 className="text-3xl font-semibold mb-4 text-center">Recent Posts</h2>
           <div className="posts-container flex overflow-x-auto space-x-6 py-10 px-2" ref={postsContainerRef}>
-            {posts.slice(posts.length - 10, posts.length - 5).map((post, index) => (
+            {posts.slice(posts.length - 5, posts.length).reverse().map((post, index) => (
               <div key={index} className="post-card-container">
                 <PostCard {...post} />
               </div>

@@ -387,9 +387,7 @@ const PostForm = ({ post }) => {
             className="mb-4 relative transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-60 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg p-2 shadow-lg shadow-blue-400/30 hover:shadow-xl hover:scale-110 cursor-pointer"
             {...register("status", { required: true })}
             onChange={(e) => e.target.value} 
-            labelClassName="text-lg font-semibold text-gray-100 mb-2"
-            inputClassName="text-lg bg-transparent border-none focus:ring-0 text-white outline-none"
-            menuClassName="bg-white text-black shadow-2xl rounded-lg overflow-hidden"
+           
             />
 
             {/* Submit Button */}

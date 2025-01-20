@@ -13,6 +13,7 @@ const conf = {
     emailJsTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
     emailJsUserId: import.meta.env.VITE_EMAILJS_USER_ID,
     emailJsToEmail: import.meta.env.VITE_EMAILJS_TO_EMAIL,
+    tinyMCEApiKey: import.meta.env.VITE_TINYMCE_APIKEY
 };
 
 export default conf;

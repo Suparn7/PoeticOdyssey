@@ -55,17 +55,6 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
             </div>
           </div>
         )}
-
-        <Link
-          to={`/PoeticOdyssey/post/${$id}`}
-          style={{
-            textDecoration: 'none',
-            color: 'inherit',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
-          }}
-        >
           {/* Image Container */}
           <div className="image-container">
             <img
@@ -89,8 +78,11 @@ const PostCard = ({ $id, title, content, featuredImage, userId }) => {
           </div>
 
           {/* Read More Link */}
-          <div className="read-more">Read More</div>
-        </Link>
+          <Link
+          to={`/PoeticOdyssey/post/${$id}`}
+          >
+            <div className="read-more">Read More</div>
+          </Link>
       </div>
     </>
   );

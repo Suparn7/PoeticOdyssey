@@ -317,7 +317,7 @@ const Post = () => {
         );
     }
 
-    return post ? (
+    return post && userData ? (
       <div className="glowing-border-wrapper ">
         <div className={`py-8 flex flex-col items-center  justify-center ${fade ? 'fade-in' : 'fade-out'}`} style={{ color: '#fff' }}>
             {isAuthor && (

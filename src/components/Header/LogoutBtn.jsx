@@ -23,7 +23,9 @@ const LogoutBtn = ({handleMenuToggle}) => {
         dispatch(clearUserData());
         dispatch(clearNotification()); // Clear notifications
         setShowConfirm(false); // Close confirmation modal
-        handleMenuToggle()
+
+        //adding this check because menu toggle function is hit for hamburger icon toggle as well
+        if(handleMenuToggle !== undefined) handleMenuToggle()
         navigate("/PoeticOdyssey/login");
     };
 
