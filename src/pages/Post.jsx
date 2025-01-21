@@ -321,7 +321,7 @@ const Post = () => {
       <div className="glowing-border-wrapper ">
         <div className={`py-8 flex flex-col items-center  justify-center ${fade ? 'fade-in' : 'fade-out'}`} style={{ color: '#fff' }}>
             {isAuthor && (
-              <div className="absolute top-[-26px] flex space-x-4 z-10">
+              <div className="absolute top-[-8px] flex space-x-4 z-10">
               {/* Edit Button */}
               <Link to={`/PoeticOdyssey/edit-post/${post.$id}`}>
                 <Button
@@ -354,7 +354,7 @@ const Post = () => {
 
             <Container className="relative z-10 ">
               <div
-                className={`bg-white bg-opacity-10 backdrop-blur-lg border border-white rounded-lg shadow-lg p-4 max-w-3xl w-full mx-auto transition-transform duration-500 ${
+                className={`bg-white bg-opacity-10 backdrop-blur-lg mt-3 border border-white rounded-lg shadow-lg p-4 max-w-3xl w-full mx-auto transition-transform duration-500 ${
                   fade ? 'animate-fadeIn' : ''
                 }`}
               >
